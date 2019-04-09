@@ -1,12 +1,11 @@
 <?php $title = 'Billet simple pour l\'Alaska'; ?>
 
 <?php ob_start(); ?>
-<h1>Billet simple pour l'Alaska</h1>
-<p>Derniers chapitres:</p>
+<h1>Les chapitres:</h1>
 
 
 <?php
-while ($data = $posts->fetch())
+foreach ($allPosts as $data)
 {
 ?>
     <div class="news">
@@ -16,14 +15,13 @@ while ($data = $posts->fetch())
         </h3>
         
         <p>
-            <?= nl2br(htmlspecialchars($data['content'])) ?>
+            <?= nl2br(htmlspecialchars($data['preview'])) ?><em> ...</em>
             <br />
-            <em><a href="index.php?action=post&amp;id=<?= $data['id'] ?>">Commentaires</a></em>
+            <em><a href="index.php?action=post&amp;id=<?= $data['id'] ?>">Lire la suite</a></em>
         </p>
     </div>
 <?php
 }
-$posts->closeCursor();
 ?>
 <?php $content = ob_get_clean(); ?>
 

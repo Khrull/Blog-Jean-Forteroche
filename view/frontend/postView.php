@@ -1,8 +1,6 @@
 <?php $title = htmlspecialchars($post['title']); ?>
 
 <?php ob_start(); ?>
-<h1>Billet simple pour l'Alaska</h1>
-<p><a href="index.php">Retour à la liste des Chapitres</a></p>
 
 <div class="news">
     <h3>
@@ -27,12 +25,12 @@
         <textarea id="comment" name="comment"></textarea>
     </div>
     <div>
-        <input type="submit" />
+        <input type="submit" value="Envoyer" />
     </div>
 </form>
 
 <?php
-while ($comment = $comments->fetch())
+foreach ($comments as $comment)
 {
 ?>
     <p><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['comment_date_fr'] ?></p>
