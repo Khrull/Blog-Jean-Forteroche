@@ -9,9 +9,21 @@ class PostManager extends Manager
     public function getPosts()
     {
         $db = $this->dbConnect();
-        $req = $db->query('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM posts ORDER BY creation_date DESC LIMIT 0, 5');
+        $resumPosts = $db->query('SELECT id, title, SUBSTRING(content, 1, 500) AS preview, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM posts ORDER BY creation_date DESC LIMIT 0, 3');
 
-        return $req;
+        $resumPosts->execute(array());
+        $results = $resumPosts->fetchAll();
+        return $results;
+    }
+
+    public function getAllPosts()
+    {
+        $db = $this->dbConnect();
+        $allPosts = $db->query('SELECT id, title, SUBSTRING(content, 1, 500) AS preview, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM posts ORDER BY creation_date');
+        
+        $allPosts->execute(array());
+        $results = $allPosts->fetchAll();
+        return $results;
     }
 
     public function getPost($postId)
@@ -23,4 +35,5 @@ class PostManager extends Manager
 
         return $post;
     }
+    
 }
