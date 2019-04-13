@@ -16,4 +16,15 @@ class UserManager extends Manager
         
         return $result;
     }
+
+    public function newUser()
+    {
+        $hash = password_hash($_POST["password"], PASSWORD_DEFAULT);
+        $db = $this->dbConnect();
+        $newUser = $db->prepare('INSERT INTO users (mail, nom, prenom, pass, date_inscription, id_groupe) VALUES($_POST[email], $_POST[nom], $_POST[prenom], $_POST[password], NOW(), 2)');
+        $user = $newUser->execute(array());
+        return $user;
+        
+		exit();
+    }
 }

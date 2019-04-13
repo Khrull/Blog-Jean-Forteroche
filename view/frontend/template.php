@@ -15,15 +15,16 @@
     <body>
 
     <!-- HEADER -->
-
+   
         <header id="header">
 
         <!-- Menu de navigation -->
+        
         <div class="row">
             <div class="col-md-4">
                 <ul class="menu">
                 <li><i class="fas fa-home"></i><a href="index.php"> Accueil</a></li>
-                <li><i class="fas fa-plug"></i><a href="index.php?action=login"> Se connecter</a></li>
+                <li><i class="fas fa-plug"></i><a href="index.php?action=btnSeConnecter"> Se connecter</a></li>
                 <li><i class="fas fa-book-open"></i><a href="index.php?action=listAllPosts"> Les chapitres</a></li>
                 </ul>
             </div> 

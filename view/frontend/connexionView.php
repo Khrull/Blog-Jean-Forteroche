@@ -2,6 +2,7 @@
 
 
 <?php ob_start(); ?>
+
 <div class="container">
     	<h1 class="jumbotron">    Connexion ou Inscription</h1>
 

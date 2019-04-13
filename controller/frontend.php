@@ -37,17 +37,36 @@ function login()
         $user = $userManager->getUser($email);
 
         var_dump($user);
-        if ($user===false){
-            header('Location: index.php?action=login');
+        if ($user===false)
+        {
+            header('Location: index.php?action=btnSeConnecter');
             exit(0);
         }
 
     }
 }
 
+function addNewUser()
+{
+    if(isset($_POST["email"]) && isset($_POST["nom"]) && isset($_POST["prenom"]) && isset($_POST["password"]) && isset($_POST["conf_password"]))
+    {
+        if($_POST["password"] == $_POST["conf_password"])
+        {
+            $hash = password_hash($_POST["password"], PASSWORD_DEFAULT);
+            $userManager = new \Forteroche\Blog\Model\UserManager();
+            $newUser = $userManager->newUser();
+        }
+        else 
+        {
+            header('Location: index.php?action=btnSeConnecter');
+        }
+    }       
+}
+
 function post()
 {
-     if (isset($_GET['id']) && $_GET['id'] > 0) {
+     if (isset($_GET['id']) && $_GET['id'] > 0) 
+    {
 
         $postManager = new \Forteroche\Blog\Model\PostManager();
         $commentManager = new \Forteroche\Blog\Model\CommentManager();
@@ -56,7 +75,8 @@ function post()
         $comments = $commentManager->getComments($_GET['id']);
     }
 
-    else {
+    else 
+    {
     throw new Exception('Aucun identifiant de chapitre envoyé');
     }
 
@@ -65,24 +85,30 @@ function post()
 
 function addComment($postId, $author, $comment)
 {
-    if (isset($_GET['id']) && $_GET['id'] > 0) {
-        if (!empty($_POST['author']) && !empty($_POST['comment'])) { 
+    if (isset($_GET['id']) && $_GET['id'] > 0) 
+    {
+        if (!empty($_POST['author']) && !empty($_POST['comment'])) 
+        { 
 
             $commentManager = new \Forteroche\Blog\Model\CommentManager();
             $affectedLines = $commentManager->postComment($postId, $author, $comment);
             
-            if ($affectedLines === false) {
+            if ($affectedLines === false) 
+            {
                 throw new Exception('Impossible d\'ajouter le commentaire !');
             }
-            else {
+            else 
+            {
                 header('Location: index.php?action=post&id=' . $postId);
             }                               
         }
-        else {
+        else 
+        {
             throw new Exception('l\'un des champs est vide');
         }
     }                               
-    else {
+    else 
+    {
         throw new Exception('Aucun identifiant de billet envoyé');
-        }
+    }
 }

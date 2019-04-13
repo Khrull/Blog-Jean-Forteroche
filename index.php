@@ -11,10 +11,13 @@ if (isset($_GET['action'])) {
 try {
         switch ($action) {
 
-                case 'login': formLogin();
+                case 'btnSeConnecter': formLogin();
                 break;
 
                 case 'connexion': login();
+                break;
+
+                case 'inscription': addNewUser();
                 break;
 
 
@@ -31,6 +34,7 @@ try {
             }
         
     }
+    
 catch(Exception $e) {
     echo 'Erreur : ' . $e->getMessage();
 }
