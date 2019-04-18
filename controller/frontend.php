@@ -4,6 +4,8 @@
 require_once('model/PostManager.php');
 require_once('model/CommentManager.php');
 require_once('model/UserManager.php');
+require_once('model/AlertManager.php');
+
 
 function listPosts()
 {
@@ -23,6 +25,7 @@ function listAllPosts()
 
 function formLogin()
 {
+    $session = new \Forteroche\Blog\Model\AlertManager();
     require('view/frontend/connexionView.php');
 }
 
@@ -30,20 +33,38 @@ function formLogin()
 
 function login()
 {
+    $session = new \Forteroche\Blog\Model\AlertManager();
     if (!empty($_POST['email']) && !empty($_POST['password'])) 
     {
         $email=trim($_POST['email']);
+        $pass=trim($_POST['password']);
         $userManager = new \Forteroche\Blog\Model\UserManager();
         $user = $userManager->getUser($email);
 
-        var_dump($user);
+        
         if ($user===false)
         {
+            
+            $session->setflash('identifiant ou mot de passe erroné.','dnager');
             header('Location: index.php?action=btnSeConnecter');
-            exit(0);
+            
         }
-
-    }
+        else
+        {
+            if ($pass!==$user['pass'])
+            {
+                
+                $session->setflash('identifiant ou mot de passe erroné.','danger');
+                header('Location: index.php?action=btnSeConnecter');
+            }
+            else
+            {
+                $session->setflash('bonjour','success');
+                header('Location: index.php?action=btnSeConnecter');
+               
+            }
+        }
+    }    
 }
 
 function addNewUser()
@@ -52,7 +73,7 @@ function addNewUser()
     {
         if($_POST["password"] == $_POST["conf_password"])
         {
-            $hash = password_hash($_POST["password"], PASSWORD_DEFAULT);
+            
             $userManager = new \Forteroche\Blog\Model\UserManager();
             $newUser = $userManager->newUser();
         }

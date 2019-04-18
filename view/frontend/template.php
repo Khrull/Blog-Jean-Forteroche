@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
     <head>
@@ -17,7 +18,7 @@
     <!-- HEADER -->
    
         <header id="header">
-
+        
         <!-- Menu de navigation -->
         
         <div class="row">
@@ -48,7 +49,7 @@
                 </div>
                 <div class="col-md-4">
                     <h4>A propos de l'auteur :</h4>
-                    <p>Jean Forteroche est né a Metz en 1975, Après avoir gagné au Loto, il décide de se consacrer au voyage et à l’écriture.  Les chiens ne font pas des chats est son premier roman, il obtient le Prix Goncourt en 2006. 
+                    <p>Jean Forteroche est né a Metz en 1975, Après avoir gagné au Loto, il décide de se consacrer au voyage et à l'écriture.  Les chiens ne font pas des chats est son premier roman, il obtient le Prix Goncourt en 2006. 
                         Depuis il a publié Un dernier pour la route et Pas de fumée sans feu qui ont obtenu plusieurs prix littéraires en Europe.  Ses thèmes de prédilection sont le voyage, l'écologie et le paranormal.</p>
                 </div>
                 

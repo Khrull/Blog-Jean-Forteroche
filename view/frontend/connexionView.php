@@ -1,9 +1,11 @@
+
 <?php $title = "Connexion"; ?>
 
 
 <?php ob_start(); ?>
 
 <div class="container">
+<?php $session->flash();?>	
     	<h1 class="jumbotron">    Connexion ou Inscription</h1>
 
 	
@@ -51,3 +53,4 @@
 
 <?php $content = ob_get_clean(); ?>
 <?php require('template.php'); ?>
+
