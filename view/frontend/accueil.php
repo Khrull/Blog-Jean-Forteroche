@@ -1,6 +1,7 @@
 <?php $title = 'Billet simple pour l\'Alaska'; ?>
 
 <?php ob_start(); ?>
+<?php $session->flash();?>
 <h1>Jean FORTEROCHE</h1>
 <p>Auteur à succés, <strong>Les chiens ne font pas des chats, Un dernier pour la route, Pas de fumée sans feu</strong>..., passionné d'écologie et grand défenseur des arbres, vous présente ici son dernier roman:<br/>
 Billet simple pour l'Alaska, basé sur un nouveau concept de publication entièrement en ligne. Comme il le dit lui même, plus de papier, plus d'arbres coupés.

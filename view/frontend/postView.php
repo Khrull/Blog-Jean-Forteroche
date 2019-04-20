@@ -14,7 +14,9 @@
 </div>
 
 <h2>Commentaires</h2>
-
+<?php
+if(isset($_SESSION['utilisateur']))
+{?>
 <form action="index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post">
     <div>
         <label for="author">Auteur</label><br />
@@ -28,8 +30,10 @@
         <input type="submit" value="Envoyer" />
     </div>
 </form>
-
 <?php
+}   
+
+
 foreach ($comments as $comment)
 {
 ?>
@@ -37,7 +41,7 @@ foreach ($comments as $comment)
     <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
 <?php
 }
-?>
+?> 
 <?php $content = ob_get_clean(); ?>
 
 <?php require('template.php'); ?>

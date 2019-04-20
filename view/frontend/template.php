@@ -25,7 +25,13 @@
             <div class="col-md-4">
                 <ul class="menu">
                 <li><i class="fas fa-home"></i><a href="index.php"> Accueil</a></li>
-                <li><i class="fas fa-plug"></i><a href="index.php?action=btnSeConnecter"> Se connecter</a></li>
+                <?php if(isset($_SESSION['utilisateur']))
+                { ?>
+                <li><i class="fas fa-user"></i><a href="index.php?action=deconnexion"> Se déconnecter</a></li>
+                <?php }
+                else {?>
+                <li><i class="fas fa-user"></i><a href="index.php?action=btnSeConnecter"> Se connecter</a></li>
+                <?php }?>
                 <li><i class="fas fa-book-open"></i><a href="index.php?action=listAllPosts"> Les chapitres</a></li>
                 </ul>
             </div> 
@@ -64,6 +70,7 @@
         </div>
     </footer>
         
+        <script src="js/main.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         
     </body>
