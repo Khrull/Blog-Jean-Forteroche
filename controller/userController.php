@@ -37,7 +37,7 @@ class UserController
                 if (password_verify($pass, $user['pass']))
                 {
                     $_SESSION['utilisateur'] = $user['prenom'];
-                    $session->setflash('bonjour', 'success');
+                    $session->setflash("bonjour, ".$user['prenom'], 'success');
                     header('Location: index.php');
                     
                 }
@@ -63,18 +63,43 @@ class UserController
         $session = new \Forteroche\Blog\Model\AlertManager();
         if(isset($_POST["email"]) && isset($_POST["nom"]) && isset($_POST["prenom"]) && isset($_POST["password"]) && isset($_POST["conf_password"]))
         {
-            if($_POST["password"] == $_POST["conf_password"])
+            if(filter_var(trim($_POST['email']), FILTER_VALIDATE_EMAIL))
             {
-                
+                $email=trim($_POST['email']);
                 $userManager = new \Forteroche\Blog\Model\UserManager();
-                $newUser = $userManager->newUser();
-                header('Location: index.php?action=btnSeConnecter');
-                $session->setflash('Inscription réussie, veuillez vous connecter.','success');
+                $user = $userManager->getUser($email);
+                if(trim($_POST["email"])!=$user['mail'])
+                {
+                    if($_POST["password"] == $_POST["conf_password"])
+                    {
+                        
+                        $userManager = new \Forteroche\Blog\Model\UserManager();
+                        $newUser = $userManager->newUser();
+                        header('Location: index.php?action=btnSeConnecter');
+                        $session->setflash('Inscription réussie, veuillez vous connecter.','success');
+                    }
+                    else 
+                    {
+                        header('Location: index.php?action=btnSeConnecter');
+                        $session->setflash('Les 2 mots de passe sont différents!','danger');
+                    }
+                }
+                else
+                {
+                    header('Location: index.php?action=btnSeConnecter');
+                    $session->setflash('cette adresse mail est déja utilisée!','danger');
+                }    
             }
-            else 
+            else
             {
                 header('Location: index.php?action=btnSeConnecter');
+                $session->setflash('Le format de l\'adresse mail est incorrect !','danger');
             }
+        }
+        else
+        {
+            header('Location: index.php?action=btnSeConnecter');
+            $session->setflash('Tous les champs doivent être remplis','danger');
         }       
     }
 }    

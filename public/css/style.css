@@ -43,10 +43,12 @@ h3 em
     text-align: center;
     font-size: 1.2em;
 }
+
 .news p em 
 {
     font-family: 'Lato', sans-serif;
 }
+
 .news
 {
     width:50%;
@@ -91,6 +93,14 @@ a
 .menu i 
 {
     color: rgb(76, 218, 228);
+}
+
+.alert
+{
+    position: fixed;
+    top:0; left:0; right:0;
+    z-index: 1060;
+    display: none;
 }
 .jumbotron
 {

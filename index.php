@@ -1,8 +1,7 @@
 <?php
-
-require_once('controller/backend.php');
-require_once('controller/postController.php');
-require_once('controller/userController.php');
+session_start();
+require('controller/postController.php');
+require('controller/userController.php');
 
 
 $action ="";
@@ -13,36 +12,36 @@ try {
         switch ($action) {
 
                 case 'btnSeConnecter': $form = new Forteroche\Blog\Controller\UserController();
-                                       $formConnexion = $form -> formLogin();
+                $form -> formLogin();
                 break;
 
                 case 'connexion': $connexion = new Forteroche\Blog\Controller\UserController();
-                                  $seConnecter= $connexion -> login();
+                $connexion -> login();
                 break;
 
                 case 'deconnexion': $deconnexion = new Forteroche\Blog\Controller\UserController();
-                                    $seDeconnecter = $deconnexion -> logout();
+                $deconnexion -> logout();
                 break;
 
                 case 'inscription': $inscription = new Forteroche\Blog\Controller\UserController();
-                                    $newInscription = $inscription -> addNewUser();
+                $inscription -> addNewUser();
                 break;
 
 
                 case 'post': $post = new Forteroche\Blog\Controller\PostController();
-                             $chapitre = $post -> post();
+                $post -> post();
                 break; 
                 
                 case 'listAllPosts': $chapitres = new Forteroche\Blog\Controller\PostController();
-                                     $listChapitres = $chapitres -> listAllPosts();
+                $chapitres -> listAllPosts();
                 break;
 
                 case 'addComment':  $addComment = new Forteroche\Blog\Controller\PostController();
-                                    $newComment = $addcomment -> addComment($_GET['id'], $_POST['author'], $_POST['comment']);
+                $addComment -> addComment($_GET['id'], $_POST['author'], $_POST['comment']);
                 break;
 
                 default: $listPosts = new Forteroche\Blog\Controller\PostController();
-                         $accueil = $listPosts -> listPosts();    
+                $listPosts -> listPosts();    
             }
         
     }

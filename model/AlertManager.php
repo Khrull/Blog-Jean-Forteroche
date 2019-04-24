@@ -5,11 +5,6 @@ namespace Forteroche\Blog\Model;
 class AlertManager
 {
 
-    public function __CONSTRUCT()
-    {
-        session_start();
-    }
-
     public function setFlash($message,$type)
     {
         $_SESSION['flash'] = array(
@@ -22,9 +17,8 @@ class AlertManager
     {
         if(isset($_SESSION['flash'])){
             ?>
-            <div class="alert alert-<?php echo $_SESSION['flash']['type'];?>">
-                <a class="close">x</a>
-                <?php echo $_SESSION['flash']['message']; ?>
+            <div id="alert" class="alert alert-<?php echo $_SESSION['flash']['type'];?>">
+            <?php echo $_SESSION['flash']['message']; ?>
             </div>
             <?php
             unset($_SESSION['flash']);
