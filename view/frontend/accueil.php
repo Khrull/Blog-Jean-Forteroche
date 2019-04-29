@@ -18,7 +18,7 @@ foreach ($resumPosts as $data)
             <div class="col-xs-12">
                 <h3>
                     <?= htmlspecialchars($data['title']) ?>
-                    <em>le <?= $data['creation_date_fr'] ?></em>
+                    
                 </h3>
             </div>    
             <div class="col-xs-12">       

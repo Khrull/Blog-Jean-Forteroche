@@ -27,17 +27,40 @@ try {
                 $inscription -> addNewUser();
                 break;
 
-
                 case 'post': $post = new Forteroche\Blog\Controller\PostController();
                 $post -> post();
                 break; 
+
+                case 'postTemp': $post = new Forteroche\Blog\Controller\PostController();
+                $post -> postTemp();
+                break;
                 
                 case 'listAllPosts': $chapitres = new Forteroche\Blog\Controller\PostController();
                 $chapitres -> listAllPosts();
                 break;
 
+                case 'listAllPostsTemp': $chapitres = new Forteroche\Blog\Controller\PostController();
+                $chapitres -> listAllPostsTemp();
+                break;
+
                 case 'addComment':  $addComment = new Forteroche\Blog\Controller\PostController();
                 $addComment -> addComment($_GET['id'], $_POST['author'], $_POST['comment']);
+                break;
+
+                case 'ecriture': $addpost = new Forteroche\Blog\Controller\PostController();
+                $addpost -> formPost();
+                break;
+
+                case 'publier': $publier = new Forteroche\Blog\Controller\PostController();
+                $publier -> addChapter();
+                break;
+
+                case 'brouillon': $publier = new Forteroche\Blog\Controller\PostController();
+                $publier -> addChapterTemp();
+                break;
+
+                case 'modification': $post = new Forteroche\Blog\Controller\PostController();
+                $post -> modification();
                 break;
 
                 default: $listPosts = new Forteroche\Blog\Controller\PostController();

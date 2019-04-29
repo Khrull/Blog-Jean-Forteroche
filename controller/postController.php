@@ -9,6 +9,11 @@ require_once('model/AlertManager.php');
 
 class PostController
 {
+    function formPost()
+    {
+        $session = new \Forteroche\Blog\Model\AlertManager();
+        require('view/backend/adminPostView.php');
+    }
 
     function listPosts()
     {
@@ -27,6 +32,14 @@ class PostController
         require('view/frontend/listPostsView.php');
     }
 
+    function listAllPostsTemp()
+    {
+        $postManager = new \Forteroche\Blog\Model\PostManager();
+        $allPosts = $postManager->getAllPostsTemp();
+
+        require('view/backend/listPostsTempView.php');
+    }
+
 
 
     function post()
@@ -36,7 +49,7 @@ class PostController
 
             $postManager = new \Forteroche\Blog\Model\PostManager();
             $commentManager = new \Forteroche\Blog\Model\CommentManager();
-
+           
             $post = $postManager->getPost($_GET['id']);
             $comments = $commentManager->getComments($_GET['id']);
         }
@@ -47,6 +60,57 @@ class PostController
         }
 
         require('view/frontend/postView.php');
+    }
+
+    function postTemp()
+    {
+        if (isset($_GET['id']) > 0) 
+        {
+
+            $postManager = new \Forteroche\Blog\Model\PostManager();
+            $post = $postManager->getPost($_GET['id']);
+            
+        }
+
+        else 
+        {
+        throw new Exception('Aucun identifiant de chapitre envoyé');
+        }
+
+        require('view/backend/postTempView.php');
+    }
+
+    function addChapter()
+    {
+        if (!empty($_POST['titre']) && !empty($_POST['chapter']))
+        {
+        $postManager = new \Forteroche\Blog\Model\PostManager();
+        $nouveauChapitre = $postManager->addPost();
+        header('Location: index.php?action=listAllPosts');
+        }
+
+    }
+
+    function addChapterTemp()
+    {
+        if (!empty($_POST['titre']) && !empty($_POST['chapter']))
+        {
+        $postManager = new \Forteroche\Blog\Model\PostManager();
+        $nouveauChapitre = $postManager->addPostTemp();
+        header('Location: index.php?action=listAllPostsTemp');
+        }
+
+    }
+
+    function modification()
+    {
+        if (isset($_GET['id']) > 0)
+        {
+            $postManager = new \Forteroche\Blog\Model\PostManager();
+            $post = $postManager->getPost($_GET['id']);
+        }
+       
+        require('view/backend/modifPostView.php');
     }
 
     function addComment($postId, $author, $comment)

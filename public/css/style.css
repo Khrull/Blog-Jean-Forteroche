@@ -35,6 +35,12 @@ h3 em
     font-size: 0.5em;
 }
 
+h5
+{
+    text-align: center;
+    background-color:rgb(143, 133, 119);
+    
+}
 .news p
 {
     font-family: 'Dancing Script', cursive;
@@ -93,6 +99,76 @@ a
 .menu i 
 {
     color: rgb(76, 218, 228);
+}
+
+.menuAdmin
+{
+    display: flex;
+    background-color: grey;
+    margin: 0;
+}
+
+.menuAdmin li 
+{
+    padding:20px;
+    list-style-type: none;
+}
+  
+.menuAdmin a 
+{
+    font-family: 'Lato', sans-serif;
+    color: rgb(0, 0, 0);
+    padding-bottom: 2px;
+    font-size: 1.2em;
+
+}
+  
+.menuAdmin a:hover 
+{
+    color: rgb(76, 218, 228);
+}
+
+.menuAdmin i 
+{
+    color: rgb(76, 218, 228);
+}
+
+.modifChapitre
+{
+    display: column;
+    background-color: grey;
+    margin: 0;
+}
+
+.modifChapitre li 
+{
+    padding:20px;
+    list-style-type: none;
+}
+  
+.modifChapitre a 
+{
+    font-family: 'Lato', sans-serif;
+    color: rgb(0, 0, 0);
+    padding-bottom: 2px;
+    font-size: 1.2em;
+
+}
+  
+.modifChapitre a:hover 
+{
+    color: rgb(76, 218, 228);
+}
+
+.modifChapitre i 
+{
+    color: rgb(76, 218, 228);
+}
+
+textarea
+{
+    width: 400px;
+    height: 100px;
 }
 
 .alert

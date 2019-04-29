@@ -39,14 +39,26 @@
             <div class="col-md-4">   
                 <h1>Billet simple pour l'Alaska</h1>
             </div>
+            <?php if(isset($_SESSION['utilisateur']))
+            {
+                if($_SESSION['grpUtilisateur']==1)
+                {?>
+                    <div class="col-md-4">
+                        <ul class="menuAdmin">
+                        <li><i class="fas fa-feather-alt"></i><a href="index.php?action=ecriture">Ecriture</a></li>
+                        <li><i class="fas fa-highlighter"></i><a href="index.php?action=listAllPostsTemp">Brouillons</a></li>
+                        <li><i class="fas fa-exclamation"></i><a href="">Modération</a></li>
+                    </div>
+                <?php }
+            }?>       
         </div>    
         </header>
 
 
     <!-- SECTION PRINCIPALE -->
-        <div class="bloc_page">
-            <?= $content ?>
-        </div>
+    <div class="bloc_page">
+        <?= $content ?>
+    </div>
         
     <footer class="footer">
    <div class="container">

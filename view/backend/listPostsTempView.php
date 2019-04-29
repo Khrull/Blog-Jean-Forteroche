@@ -1,7 +1,7 @@
 <?php $title = 'Billet simple pour l\'Alaska'; ?>
 
 <?php ob_start(); ?>
-<h1>Les chapitres:</h1>
+<h1>Les chapitres en attente:</h1>
 
 
 <?php
@@ -17,7 +17,7 @@ foreach ($allPosts as $data)
         <p>
             <?= nl2br(htmlspecialchars($data['preview'])) ?><em> ...</em>
             <br />
-            <em><a href="index.php?action=post&amp;id=<?= $data['id'] ?>">Lire la suite</a></em>
+            <em><a href="index.php?action=postTemp&amp;id=<?= $data['id'] ?>">Lire la suite</a></em>
         </p>
     </div>
 <?php
@@ -25,4 +25,4 @@ foreach ($allPosts as $data)
 ?>
 <?php $content = ob_get_clean(); ?>
 
-<?php require('template.php'); ?>
+<?php require('view/frontend/template.php'); ?>
