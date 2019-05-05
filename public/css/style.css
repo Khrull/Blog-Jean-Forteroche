@@ -1,7 +1,7 @@
 .bloc_page {
     
     margin: 0;
-    padding: 20px;
+    padding: 5px;
     border: 5px solid grey;
     background-color: rgb(184, 172, 154);
     
@@ -16,6 +16,7 @@ header h1
 {
     margin-top: 0.5em;
 }
+
 
 h1, h3, p
 {
@@ -64,10 +65,30 @@ h5
 a
 {
     text-decoration: none;
-    color: rgb(57, 86, 216);
+    color: rgb(2, 15, 202);
     font-size: 0.9em;
 }
 
+.sign
+{
+    color: rgb(63, 50, 33);
+}
+
+.sign:hover
+{
+    text-decoration: none;
+    color: rgb(216, 57, 57);
+}
+
+.signale
+{
+    color: rgb(216, 57, 57); 
+}
+
+.modere
+{
+    color:  rgb(39, 121, 50);
+}
 
 .menu 
 {
@@ -165,11 +186,6 @@ a
     color: rgb(76, 218, 228);
 }
 
-textarea
-{
-    width: 400px;
-    height: 100px;
-}
 
 .alert
 {
@@ -180,9 +196,11 @@ textarea
 }
 .jumbotron
 {
-    font-size:76px;
+    font-size: 3em;
     text-align: center;
     background-color: rgb(160, 160, 160);
+    padding: 5px;
+
 }
 
 input[type=submit]

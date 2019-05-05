@@ -11,9 +11,9 @@
 	
 	<div class="row">
 		<!-- Formulaire de connexion-->
-<form action="index.php?action=connexion&amp;identification=connexionpost" method="post" class="col-md-6" id="connexion">
-	<h2>Connexion</h2>
-	<div class="form-group">
+		<form action="index.php?action=connexion&amp;identification=connexionpost" method="post" class="col-md-6" id="connexion">
+		<h2>Connexion</h2>
+		<div class="form-group">
 		<input type="text" placeholder="Adresse Email" id="email" name="email" class="form-control email" required>
 	</div>
 	<div class="form-group">

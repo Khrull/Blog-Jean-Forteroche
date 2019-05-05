@@ -9,15 +9,16 @@
 <form  method="post">
     <div>
         <label for="titre">Titre du chapitre</label><br />
-        <input type="text" id="titre" name="titre" value="<?= htmlspecialchars($post['title']) ?>"/>
+        <input type="text" id="titre" name="titre" value="<?= $post['title'] ?>"/>
     </div>
     <div>
         <label for="chapter">Chapitre</label><br />
-        <textarea id="chapter" name="chapter" value="<?= nl2br(htmlspecialchars($post['content'])) ?>"></textarea>
+        <textarea rows = "40" id="chapter" name="chapter"><?= nl2br($post['content']) ?></textarea>
     </div>
     <div>
         <input type="submit" value="Publier" class=" btn btn-primary" formaction="index.php?action=publier" />
         <input type="submit" value="Brouillon" class=" btn btn-warning" formaction="index.php?action=brouillon" />
+        <input type="submit" value="Supprimer" class=" btn btn-danger" formaction="index.php?action=supprimer&id=<?php echo $post['id']; ?>" />
     </div>
 </form>
 <?php $content = ob_get_clean(); ?>

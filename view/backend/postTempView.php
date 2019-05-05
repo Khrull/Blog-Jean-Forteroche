@@ -7,21 +7,20 @@
                 {?>
                     <div class="col-md-2">
                         <ul class="modifChapitre">
-                        <li><i class="fas fa-feather-alt"></i><a href="index.php?action=modification">Modification</a></li>
-                        <li><i class="fas fa-trash-alt"></i><a href="index.php?action=corbeille">Suppression</a></li>
-                        
+                        <li><i class="fas fa-feather-alt"></i><a href="index.php?action=modification&id=<?php echo $post['id']; ?>">Modification</a></li>
+                                                
                     </div>
                 <?php }
             }?> 
 <div class="news">
     <h3>
-        <?= htmlspecialchars($post['title']) ?>
+        <?= ($post['title']) ?>
         
     </h3>
     
     <p>
         
-        <?= nl2br(htmlspecialchars($post['content'])) ?>
+        <?= nl2br($post['content']) ?>
     </p>
 </div>
 

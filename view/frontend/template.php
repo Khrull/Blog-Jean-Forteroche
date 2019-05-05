@@ -47,7 +47,7 @@
                         <ul class="menuAdmin">
                         <li><i class="fas fa-feather-alt"></i><a href="index.php?action=ecriture">Ecriture</a></li>
                         <li><i class="fas fa-highlighter"></i><a href="index.php?action=listAllPostsTemp">Brouillons</a></li>
-                        <li><i class="fas fa-exclamation"></i><a href="">Modération</a></li>
+                        <li><i class="fas fa-exclamation"></i><a href="index.php?action=moderation">Modération</a></li>
                     </div>
                 <?php }
             }?>       

@@ -10,12 +10,12 @@ foreach ($allPosts as $data)
 ?>
     <div class="news">
         <h3>
-            <?= htmlspecialchars($data['title']) ?>
+            <?= ($data['title']) ?>
             
         </h3>
         
         <p>
-            <?= nl2br(htmlspecialchars($data['preview'])) ?><em> ...</em>
+            <?= nl2br($data['preview']) ?><em> ...</em>
             <br />
             <em><a href="index.php?action=postTemp&amp;id=<?= $data['id'] ?>">Lire la suite</a></em>
         </p>

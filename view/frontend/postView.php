@@ -7,8 +7,8 @@
                 {?>
                     <div class="col-md-2">
                         <ul class="modifChapitre">
-                        <li><i class="fas fa-feather-alt"></i><a href="index.php?action=modification">Modification</a></li>
-                        <li><i class="fas fa-trash-alt"></i><a href="">Suppression</a></li>
+                        <li><i class="fas fa-feather-alt"></i><a href="index.php?action=modification&id=<?php echo $post['id']; ?>">Modification</a></li>
+                        <li><i class="fas fa-trash-alt"></i><a href="index.php?action=depublier&id=<?php echo $post['id']; ?>">Dépublier</a></li>
                         
                     </div>
                 <?php }
@@ -26,16 +26,15 @@
 </div>
 
 <h2>Commentaires</h2>
+<?php $session->flash();?>
 <?php
 if(isset($_SESSION['utilisateur']))
 {?>
 <form action="index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post">
     <div>
-        <label for="author">Auteur</label><br />
-        <input type="text" id="author" name="author" value="<?php echo $_SESSION['utilisateur']?>" />
+        <input hidden type="text" id="author" name="author" value="<?php echo $_SESSION['utilisateur']?>" />
     </div>
     <div>
-        <label for="comment">Commentaire</label><br />
         <textarea id="comment" name="comment"></textarea>
     </div>
     <div>
@@ -45,8 +44,6 @@ if(isset($_SESSION['utilisateur']))
 
 <?php
 }   
-
-
 foreach ($comments as $comment)
 {
 ?>
@@ -57,9 +54,21 @@ foreach ($comments as $comment)
             <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
             <?php
             if(isset($_SESSION['utilisateur']))
-            {?>
-            <i class="fas fa-exclamation"></i><a href="index.php?signaler"> Signaler</a> 
-            <?php }?>
+            {
+                if($comment['signale'] ==2)
+                { ?>
+                    <span class="signale"> Signalé !</span>
+                <?php }
+                elseif($comment['signale'] ==3)
+                { ?>
+                    <span class="modere"> Modéré </span>
+                <?php }
+                elseif($comment['signale'] ==1)
+                { ?>
+                    <i class="fas fa-exclamation-triangle" ></i><a class="sign" href="index.php?signaler"> Signaler</a>
+                <?php }
+        
+            }?>
         </div>
     </div>    
 </div>                

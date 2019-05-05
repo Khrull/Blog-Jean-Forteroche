@@ -55,12 +55,32 @@ try {
                 $publier -> addChapter();
                 break;
 
+                case 'depublier': $depublier = new Forteroche\Blog\Controller\PostController();
+                $depublier -> depublier();
+                break;
+
                 case 'brouillon': $publier = new Forteroche\Blog\Controller\PostController();
                 $publier -> addChapterTemp();
                 break;
 
+                case 'supprimer': $supprimer = new Forteroche\Blog\Controller\PostController();
+                $supprimer -> suppression();
+                break;
+
                 case 'modification': $post = new Forteroche\Blog\Controller\PostController();
                 $post -> modification();
+                break;
+
+                case 'signaler': $signalement = new \Forteroche\Blog\Controller\PostController();
+                $signalement -> signalComment();
+                break;
+
+                case 'moderation': $moderation = new \Forteroche\Blog\Controller\PostController();
+                $moderation -> moderation();
+                break;
+
+                case 'modifier': $modification = new \Forteroche\Blog\Controller\PostController();
+                $modification -> modifier();
                 break;
 
                 default: $listPosts = new Forteroche\Blog\Controller\PostController();

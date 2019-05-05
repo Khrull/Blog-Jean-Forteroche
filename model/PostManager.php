@@ -6,6 +6,7 @@ require_once("model/Manager.php");
 
 class PostManager extends Manager
 {
+    //Renvoie les 3 derniers posts
     public function getPosts()
     {
         $db = $this->dbConnect();
@@ -16,6 +17,7 @@ class PostManager extends Manager
         return $results;
     }
 
+    //Renvoie tous les posts
     public function getAllPosts()
     {
         $db = $this->dbConnect();
@@ -26,6 +28,7 @@ class PostManager extends Manager
         return $results;
     }
 
+    //Renvoie tous posts non publiers
     public function getAllPostsTemp()
     {
         $db = $this->dbConnect();
@@ -36,6 +39,7 @@ class PostManager extends Manager
         return $results;
     }
 
+    //Renvoie le post selectionné
     public function getPost($postId)
     {
         $db = $this->dbConnect();
@@ -46,6 +50,7 @@ class PostManager extends Manager
         return $post;
     }
 
+    //Ajoute un post publier a la base de donnée
     public function addPost()
     {
         $db = $this->dbConnect();
@@ -54,12 +59,29 @@ class PostManager extends Manager
         return $nouveauChapitre;
     }
 
+    public function unpublish()
+    {
+        $db = $this->dbConnect();
+        $unpublishPost = $db->prepare('UPDATE posts SET statut = 2 WHERE id =?');
+            
+    }
+
+    //Ajoute un post non publier a la base de donné
     public function addPostTemp()
     {
         $db = $this->dbConnect();
         $newPost = $db->prepare('INSERT INTO posts(title, content, creation_date, statut) VALUES(?, ?, NOW(), 2)');
         $nouveauChapitre = $newPost->execute(array($_POST['titre'], $_POST['chapter']));
         return $nouveauChapitre;
+    }
+
+    // Efface un article
+    public function deletePost($postId)
+    {
+        $db = $this->dbConnect();
+        $deletePost = $db->prepare('DELETE FROM posts WHERE id = :id');
+        $deletePost->execute(array(':id'=> $postId));
+      
     }
     
 }
