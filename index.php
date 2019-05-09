@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 require('controller/postController.php');
 require('controller/userController.php');
 
@@ -68,11 +69,19 @@ try {
                 break;
 
                 case 'modification': $post = new Forteroche\Blog\Controller\PostController();
-                $post -> modification();
+                $post -> modificationPost();
                 break;
 
                 case 'signaler': $signalement = new \Forteroche\Blog\Controller\PostController();
                 $signalement -> signalComment();
+                break;
+
+                case 'modComment': $modCom = new \Forteroche\Blog\Controller\PostController();
+                $modCom -> modifComment($_GET['id'], $_POST['comment']);
+                break;
+
+                case 'supCom': $signalement = new \Forteroche\Blog\Controller\PostController();
+                $signalement -> delCom();
                 break;
 
                 case 'moderation': $moderation = new \Forteroche\Blog\Controller\PostController();

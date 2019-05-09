@@ -8,18 +8,24 @@
 foreach ($allPosts as $data)
 {
 ?>
-    <div class="news">
-        <h3>
-            <?= htmlspecialchars($data['title']) ?>
-            
-        </h3>
-        
-        <p>
-            <?= nl2br(htmlspecialchars($data['preview'])) ?><em> ...</em>
-            <br />
-            <em><a href="index.php?action=post&amp;id=<?= $data['id'] ?>">Lire la suite</a></em>
-        </p>
+<div class="listPostView">
+    <div class="container">
+        <div class="col-md-12">
+            <div class="news">
+                <h3>
+                    <?= htmlspecialchars($data['title']) ?>
+                    
+                </h3>
+                
+                <article>
+                    <?= nl2br(htmlspecialchars($data['preview'])) ?><em> ...</em>
+                    <br />
+                    <em><a href="index.php?action=post&amp;id=<?= $data['id'] ?>">Lire la suite</a></em>
+                </article>
+            </div>
+        </div>
     </div>
+</div>    
 <?php
 }
 ?>

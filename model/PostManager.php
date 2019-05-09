@@ -59,10 +59,12 @@ class PostManager extends Manager
         return $nouveauChapitre;
     }
 
-    public function unpublish()
+    public function unpublish($postId)
     {
         $db = $this->dbConnect();
         $unpublishPost = $db->prepare('UPDATE posts SET statut = 2 WHERE id =?');
+        $depublie = $unpublishPost->execute(array($postId));
+        return $depublie;
             
     }
 

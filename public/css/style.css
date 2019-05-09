@@ -18,11 +18,45 @@ header h1
 }
 
 
-h1, h3, p
+h1, h3
 {
     font-family: 'Lato', sans-serif;
     text-align: center;
 }
+
+.accueilView
+{
+    margin-left: 15%;
+}
+
+.listPostTemp
+{
+    margin-left: 15%;
+}
+
+.presentation
+{
+    text-align: center;
+}
+
+.listPostView
+{
+    margin-left: 15%;
+}
+
+.commentaire
+{
+    text-align: center;
+}
+
+.formCom
+{
+    
+    margin-left: 39%;
+    width: 80%;
+
+}
+
 h3
 {
     background-color:rgb(59, 151, 163);
@@ -42,7 +76,7 @@ h5
     background-color:rgb(143, 133, 119);
     
 }
-.news p
+.news article
 {
     font-family: 'Dancing Script', cursive;
     background-color:rgb(143, 133, 119);
@@ -51,15 +85,15 @@ h5
     font-size: 1.2em;
 }
 
-.news p em 
+.news article em 
 {
     font-family: 'Lato', sans-serif;
 }
 
 .news
 {
-    width:50%;
-    margin:auto;
+    width:80%;
+   
 }
 
 a
@@ -156,14 +190,14 @@ a
 
 .modifChapitre
 {
-    display: column;
+    margin-left: 0%;
     background-color: grey;
-    margin: 0;
+    
 }
 
 .modifChapitre li 
 {
-    padding:20px;
+    font-size: 0.9em;
     list-style-type: none;
 }
   

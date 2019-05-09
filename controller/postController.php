@@ -34,6 +34,7 @@ class PostController
 
     function listAllPostsTemp()
     {
+        $session = new \Forteroche\Blog\Model\AlertManager();
         $postManager = new \Forteroche\Blog\Model\PostManager();
         $allPosts = $postManager->getAllPostsTemp();
 
@@ -92,12 +93,22 @@ class PostController
     }
 
     function depublier()
-    {   if (isset($_GET['id']) > 0)
+    {   
+        if (isset($_GET['id'])) 
         {
-            $depublier = new \Forteroche\Blog\Model\PostManager();
-            $depubication = $depublier->unpublish();
+
+            $unpublish = new \Forteroche\Blog\Model\postManager();
+            $depuPost = $unpublish->unpublish($_GET['id']);
+            
         }
-        
+
+        else 
+        {
+        throw new Exception('Aucun identifiant de chapitre envoyé');
+        }
+        $session = new \Forteroche\Blog\Model\AlertManager();
+        $session->setflash('le chapitre a bien été dépublié','success');
+        header('Location: index.php?action=listAllPostsTemp');        
     }
 
     function addChapterTemp()
@@ -118,7 +129,7 @@ class PostController
         require('view/frontend/listPostsView.php');
     }
 
-    function modification()
+    function modificationPost()
     {
         if (isset($_GET['id']) > 0)
         {
@@ -154,7 +165,7 @@ class PostController
 
     function signalComment()
     {
-        if (isset($_GET['id']) > 0) 
+        if (isset($_GET['id'])) 
         {
 
             $signalement = new \Forteroche\Blog\Model\commentManager();
@@ -166,23 +177,69 @@ class PostController
         {
         throw new Exception('Aucun identifiant de chapitre envoyé');
         }
+        $session = new \Forteroche\Blog\Model\AlertManager();
+        $session->setflash('le commentaire a bien été signalé','success');
+        header('Location: index.php?action=post&id=' . $_GET['post_id']);
+    }
 
-        require('view/frontend/postView.php');
+    function delCom()
+    {
+        if (isset($_GET['id'])) 
+        {
+
+            $suppCom = new \Forteroche\Blog\Model\commentManager();
+            $supprimer = $suppCom->delComment($_GET['id']);
+            
+        }
+
+        else 
+        {
+        throw new Exception('Aucun identifiant de chapitre envoyé');
+        }
+        $session = new \Forteroche\Blog\Model\AlertManager();
+        $session->setflash('le commentaire a bien été supprimé','success');
+        header('location: index.php?action=moderation');
+    }
+
+    function modifComment()
+    {
+        if (isset($_GET['id'])) 
+        {
+
+            $modComment = new \Forteroche\Blog\Model\commentManager();
+            $modifComment = $modComment->modComment($_GET['id'], $comment);
+            
+        }
+
+        else 
+        {
+        throw new Exception('Aucun identifiant de chapitre envoyé');
+        }
+        $session = new \Forteroche\Blog\Model\AlertManager();
+        $session->setflash('le commentaire a bien été modéré','success');
+        header('Location: index.php?action=post&id=' . $_GET['post_id']);
     }
 
     function moderation()
     {
         $moderation = new \Forteroche\Blog\Model\commentManager();
+        $session = new \Forteroche\Blog\Model\AlertManager();
         $comments = $moderation->getSignalComments();
-         
+        
 
         require('view/backend/moderationView.php');
     }
 
     function modifier()
     {
-        $modComment =new \Forteroche\Blog\Model\commentManager();
-        $comment = $modComment->getComment();
-        require('view/backend/modCommentView.php');
+        if (isset($_GET['id'])) 
+        
+        {
+            $commentId = $_GET['id'];
+            $modComment =new \Forteroche\Blog\Model\commentManager();
+            $comment = $modComment->getComment($commentId);
+            
+            require('view/backend/modCommentView.php');
+        }
     }
 }    

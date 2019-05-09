@@ -4,14 +4,15 @@
 
 <h1>Modification du commentaire :</h1>
 
-<form action="index.php?action=modComment&amp;id=<?= $post['id'] ?>" method="post">
+<form  method="post">
     
     <div>
         <label for="comment">Commentaire</label><br />
-        <textarea id="comment" name="comment" value="<?php echo $comment['comment']?>"></textarea>
+        <textarea id="comment" name="comment" ><?php echo $comment['comment']?></textarea>
     </div>
     <div>
-        <input type="submit" value="envoyer" />
+        <input type="submit" value="modérer" class=" btn btn-primary" formaction="index.php?action=modComment&id=<?= $comment['id'] ?>&post_id=<?= $comment['post_id'] ?>" />
+        <input type="submit" value="Supprimer" class=" btn btn-danger" formaction="index.php?action=supCom&id=<?= $comment['id']; ?>" />
     </div>
 </form>
 

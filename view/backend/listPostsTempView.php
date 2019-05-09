@@ -1,6 +1,7 @@
 <?php $title = 'Billet simple pour l\'Alaska'; ?>
 
 <?php ob_start(); ?>
+<?php $session->flash();?>
 <h1>Les chapitres en attente:</h1>
 
 
@@ -8,18 +9,26 @@
 foreach ($allPosts as $data)
 {
 ?>
-    <div class="news">
-        <h3>
-            <?= ($data['title']) ?>
-            
-        </h3>
-        
-        <p>
-            <?= nl2br($data['preview']) ?><em> ...</em>
-            <br />
-            <em><a href="index.php?action=postTemp&amp;id=<?= $data['id'] ?>">Lire la suite</a></em>
-        </p>
+<div class="listPostTemp">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="news">
+                    <h3>
+                        <?= ($data['title']) ?>
+                        
+                    </h3>
+                    
+                    <article>
+                        <?= nl2br($data['preview']) ?><em> ...</em>
+                        <br />
+                        <em><a href="index.php?action=postTemp&amp;id=<?= $data['id'] ?>">Lire la suite</a></em>
+                    </article>
+                </div>
+            </div>    
+        </div>    
     </div>
+</div>       
 <?php
 }
 ?>

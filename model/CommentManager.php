@@ -15,11 +15,11 @@ class CommentManager extends Manager
         return $results;
     }
 
-    public function getComment()
+    public function getComment($commentId)
     {
         $db = $this->dbConnect();
-        $req = $db->prepare('SELECT id, author, comment, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM comments WHERE id = ?');
-        $req->execute(array());
+        $req = $db->prepare('SELECT id, post_id, author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM comments WHERE id = ?');
+        $req->execute(array($commentId));
         $comment = $req->fetch();
 
         return $comment;
@@ -51,6 +51,24 @@ class CommentManager extends Manager
         return $signalCom;
         
     }
+
+    public function modComment($comId, $comment)
+    {
+        $db = $this->dbConnect();
+        $comments = $db->prepare('UPDATE comments SET comment = ?, signale = 3 WHERE id = ?');
+        $modCom = $comments->execute(array($comId,));
+        return $modCom;
+    }
+
+    public function delComment($comId)
+    {
+        $db = $this->dbConnect();
+        $comments = $db->prepare('UPDATE comments SET signale = 4 WHERE id = ?');
+        $delCom = $comments->execute(array($comId));
+        return $delCom;
+        
+    }
+
 
     public function setSignalOk()
     {
