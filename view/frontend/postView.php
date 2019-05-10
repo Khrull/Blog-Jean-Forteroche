@@ -19,13 +19,13 @@
                         <div class="col-md-10">
                             <div class="news">
                                 <h3>
-                                    <?= htmlspecialchars($post['title']) ?>
+                                    <?= ($post['title']) ?>
                                     
                                 </h3>
                                 
                                 <article>
                                     
-                                    <?= nl2br(htmlspecialchars($post['content'])) ?>
+                                    <?= nl2br($post['content']) ?>
                                 </article>
                             </div>
                         </div> 
