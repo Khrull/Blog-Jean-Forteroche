@@ -89,12 +89,6 @@ class PostController
         $nouveauChapitre = $postManager->addPost();
         header('Location: index.php?action=listAllPosts');
         }
-        else
-        {
-            $session = new \Forteroche\Blog\Model\AlertManager();
-            $session->setflash('l\'un des champs est vide','danger');
-            header('Location: index.php?action=ecriture'); 
-        }
 
     }
 

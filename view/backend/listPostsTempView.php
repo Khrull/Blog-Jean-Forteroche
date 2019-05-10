@@ -15,7 +15,7 @@ foreach ($allPosts as $data)
             <div class="col-md-12">
                 <div class="news">
                     <h3>
-                        <?= $data['title'] ?>
+                        <?= ($data['title']) ?>
                         
                     </h3>
                     
