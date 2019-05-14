@@ -78,7 +78,7 @@ class PostManager extends Manager
     }
 
     // Efface un article
-    public function deletePost($postId)
+    public function deletePost()
     {
         $db = $this->dbConnect();
         $deletePost = $db->prepare('DELETE FROM posts WHERE id = :id');

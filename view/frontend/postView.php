@@ -25,7 +25,7 @@
                                 
                                 <article>
                                     
-                                    <?= nl2br(htmlspecialchars($post['content'])) ?>
+                                    <?= nl2br($post['content']) ?>
                                 </article>
                             </div>
                         </div> 

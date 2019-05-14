@@ -60,6 +60,10 @@ try {
                 $depublier -> depublier();
                 break;
 
+                case 'republier': $republier = new Forteroche\Blog\Controller\PostController();
+                $republier -> republier();
+                break;
+
                 case 'brouillon': $publier = new Forteroche\Blog\Controller\PostController();
                 $publier -> addChapterTemp();
                 break;

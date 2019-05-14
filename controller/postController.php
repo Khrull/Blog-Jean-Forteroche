@@ -26,6 +26,7 @@ class PostController
 
     function listAllPosts()
     {
+        $session = new \Forteroche\Blog\Model\AlertManager();
         $postManager = new \Forteroche\Blog\Model\PostManager();
         $allPosts = $postManager->getAllPosts();
 
@@ -85,11 +86,19 @@ class PostController
     {
         if (!empty($_POST['titre']) && !empty($_POST['chapter']))
         {
-        $postManager = new \Forteroche\Blog\Model\PostManager();
-        $nouveauChapitre = $postManager->addPost();
-        header('Location: index.php?action=listAllPosts');
+            $postManager = new \Forteroche\Blog\Model\PostManager();
+            $nouveauChapitre = $postManager->addPost();
+            $session = new \Forteroche\Blog\Model\AlertManager();
+            $session->setflash('Le chapitre a bien été publier','success');
+            header('Location: index.php?action=listAllPosts');
         }
-
+        else
+        {
+            $session = new \Forteroche\Blog\Model\AlertManager();
+            $session->setflash('l\'un des champs est vide','danger');
+            header('Location: index.php?action=ecriture'); 
+        }
+            
     }
 
     function depublier()
@@ -115,17 +124,27 @@ class PostController
     {
         if (!empty($_POST['titre']) && !empty($_POST['chapter']))
         {
-        $postManager = new \Forteroche\Blog\Model\PostManager();
-        $nouveauChapitre = $postManager->addPostTemp();
-        header('Location: index.php?action=listAllPostsTemp');
+            $postManager = new \Forteroche\Blog\Model\PostManager();
+            $nouveauChapitre = $postManager->addPostTemp();
+            $session = new \Forteroche\Blog\Model\AlertManager();
+            $session->setflash('Le chapitre a bien été ajouter a la liste temporaire','success');
+            header('Location: index.php?action=listAllPostsTemp');
+        
         }
+        else
+        {
+            $session = new \Forteroche\Blog\Model\AlertManager();
+            $session->setflash('l\'un des champs est vide','danger');
+            header('Location: index.php?action=ecriture'); 
+        }
+        
 
     }
 
-    function suppression($deletePost)
+    function suppression()
     {
         $postManager = new \Forteroche\Blog\Model\PostManager();
-        $postManager->deletePost($deletePost);
+        $postManager->deletePost();
         require('view/frontend/listPostsView.php');
     }
 
