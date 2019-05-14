@@ -3,6 +3,7 @@ session_start();
 
 require('controller/postController.php');
 require('controller/userController.php');
+require('vendor/autoload.php');
 
 
 $action ="";
@@ -62,6 +63,10 @@ try {
 
                 case 'republier': $republier = new Forteroche\Blog\Controller\PostController();
                 $republier -> republier();
+                break;
+
+                case 'modBrouillon': $modBrouillon = new Forteroche\Blog\Controller\PostController();
+                $modBrouillon -> modBrouillon();
                 break;
 
                 case 'brouillon': $publier = new Forteroche\Blog\Controller\PostController();

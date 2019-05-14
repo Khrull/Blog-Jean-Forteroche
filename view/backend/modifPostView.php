@@ -16,8 +16,8 @@
         <textarea rows = "40" id="chapter" name="chapter"><?= nl2br($post['content']) ?></textarea>
     </div>
     <div>
-        <input type="submit" value="Publier" class=" btn btn-primary" formaction="index.php?action=republier" />
-        <input type="submit" value="Brouillon" class=" btn btn-warning" formaction="index.php?action=modbrouillon" />
+        <input type="submit" value="Publier" class=" btn btn-primary" formaction="index.php?action=republier&id=<?php echo $post['id']; ?>" />
+        <input type="submit" value="Brouillon" class=" btn btn-warning" formaction="index.php?action=modBrouillon&id=<?php echo $post['id']; ?>" />
         <input type="submit" value="Supprimer" class=" btn btn-danger" formaction="index.php?action=supprimer&id=<?php echo $post['id']; ?>" />
     </div>
 </form>

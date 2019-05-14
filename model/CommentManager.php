@@ -56,7 +56,7 @@ class CommentManager extends Manager
     {
         $db = $this->dbConnect();
         $comments = $db->prepare('UPDATE comments SET comment = ?, signale = 3 WHERE id = ?');
-        $modCom = $comments->execute(array($comId,));
+        $modCom = $comments->execute(array($comment, $comId));
         return $modCom;
     }
 

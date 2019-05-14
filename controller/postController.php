@@ -141,11 +141,54 @@ class PostController
 
     }
 
+    function republier()
+    {
+        if (isset($_GET['id']))
+        {
+            $modBrouillon = new \Forteroche\Blog\Model\PostManager();
+            $modifBrouillon = $modBrouillon->rePublier($_GET['id'], $_POST['titre'], $_POST['chapter']);
+        }
+        else
+        {
+            throw new Exception('Aucun identifiant de chapitre envoyé');    
+        }
+        $session = new \Forteroche\Blog\Model\AlertManager();
+        $session->setflash('le chapitre a bien été modifié et publier','success');
+        header('location: index.php?action=listAllPosts');
+          
+    }
+
+    function modBrouillon()
+    {
+        if (isset($_GET['id']))
+        {
+            $modBrouillon = new \Forteroche\Blog\Model\PostManager();
+            $modifBrouillon = $modBrouillon->modifBrouillon($_GET['id'], $_POST['titre'], $_POST['chapter']);
+        }
+        else
+        {
+            throw new Exception('Aucun identifiant de chapitre envoyé');    
+        }
+        $session = new \Forteroche\Blog\Model\AlertManager();
+        $session->setflash('le brouillon a bien été modifié','success');
+        header('location: index.php?action=listAllPostsTemp');
+          
+    }
+
     function suppression()
     {
-        $postManager = new \Forteroche\Blog\Model\PostManager();
-        $postManager->deletePost();
-        require('view/frontend/listPostsView.php');
+        if (isset ($_GET['id']))
+        {
+            $postManager = new \Forteroche\Blog\Model\PostManager();
+            $deletePost = $postManager->deletePost($_GET['id']);
+        }
+        else 
+        {
+        throw new Exception('Aucun identifiant de chapitre envoyé');
+        }    
+        $session = new \Forteroche\Blog\Model\AlertManager();
+        $session->setflash('Le chapitre a bien été supprimé','success');
+        header('Location: index.php?action=listAllPostsTemp');
     }
 
     function modificationPost()
@@ -226,7 +269,7 @@ class PostController
         {
 
             $modComment = new \Forteroche\Blog\Model\commentManager();
-            $modifComment = $modComment->modComment($_GET['id'], $comment);
+            $modifComment = $modComment->modComment($_GET['id'], $_POST['comment']);
             
         }
 
@@ -236,7 +279,7 @@ class PostController
         }
         $session = new \Forteroche\Blog\Model\AlertManager();
         $session->setflash('le commentaire a bien été modéré','success');
-        header('Location: index.php?action=post&id=' . $_GET['post_id']);
+        header('location: index.php?action=moderation');
     }
 
     function moderation()

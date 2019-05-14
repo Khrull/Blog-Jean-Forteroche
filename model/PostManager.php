@@ -59,6 +59,16 @@ class PostManager extends Manager
         return $nouveauChapitre;
     }
 
+    //modifie et publie un chapitre
+    public function rePublier($postId, $postTitle, $postContent)
+    {
+        $db = $this->dbConnect();
+        $modPost = $db->prepare('UPDATE posts SET title = ?, content = ?, statut = 1, creation_date = NOW() WHERE id = ?');
+        $modifPost = $modPost->execute(array($postTitle, $postContent, $postId));
+    return $modifPost;
+    }
+
+    //Passe un chapitre de publier a brouillon
     public function unpublish($postId)
     {
         $db = $this->dbConnect();
@@ -77,12 +87,21 @@ class PostManager extends Manager
         return $nouveauChapitre;
     }
 
-    // Efface un article
-    public function deletePost()
+    //modifie un chapitre brouillon
+    public function modifBrouillon($postId, $postTitle, $postContent)
     {
         $db = $this->dbConnect();
-        $deletePost = $db->prepare('DELETE FROM posts WHERE id = :id');
-        $deletePost->execute(array(':id'=> $postId));
+        $modPost = $db->prepare('UPDATE posts SET title = ?, content = ?, statut = 2 WHERE id = ?');
+        $modifPost = $modPost->execute(array($postTitle, $postContent, $postId));
+        return $modifPost;
+    }
+
+    // Efface un article
+    public function deletePost($postId)
+    {
+        $db = $this->dbConnect();
+        $deletePost = $db->prepare('DELETE FROM posts WHERE id = ?');
+        $deletePost->execute(array($postId));
       
     }
     
