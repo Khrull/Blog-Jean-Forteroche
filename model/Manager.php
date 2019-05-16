@@ -1,6 +1,6 @@
 <?php
 
-namespace Forteroche\Blog\Model;
+namespace Model;
 
 class Manager
 {

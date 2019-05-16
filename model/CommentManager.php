@@ -1,8 +1,8 @@
 <?php
 
-namespace Forteroche\Blog\Model;
+namespace Model;
 
-require_once("model/Manager.php");
+use \model;
 
 class CommentManager extends Manager
 {
@@ -68,12 +68,5 @@ class CommentManager extends Manager
         return $delCom;
         
     }
-
-
-    public function setSignalOk()
-    {
-        $db = $this->dbConnect();
-        $comments = $db->prepare('UPDATE comments SET signale = 3 WHERE post_id = ?');
-
-    }
+    
 }

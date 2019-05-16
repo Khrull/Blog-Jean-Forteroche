@@ -1,8 +1,8 @@
 <?php
 
-namespace Forteroche\Blog\Model;
+namespace Model;
 
-require_once("model/Manager.php");
+use \model;
 
 class PostManager extends Manager
 {

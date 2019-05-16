@@ -1,24 +1,22 @@
 <?php
-namespace Forteroche\Blog\Controller;
+namespace Controller;
 
 // Chargement des classes
-require_once('model/PostManager.php');
-require_once('model/CommentManager.php');
-require_once('model/UserManager.php');
-require_once('model/AlertManager.php');
+use \model;
+
 
 class PostController
 {
     function formPost()
     {
-        $session = new \Forteroche\Blog\Model\AlertManager();
+        $session = new \Model\AlertManager();
         require('view/backend/adminPostView.php');
     }
 
     function listPosts()
     {
-        $session = new \Forteroche\Blog\Model\AlertManager();
-        $postManager = new \Forteroche\Blog\Model\PostManager();
+        $session = new \Model\AlertManager();
+        $postManager = new \Model\PostManager();
         $resumPosts = $postManager->getPosts();
 
         require('view/frontend/accueil.php');
@@ -26,8 +24,8 @@ class PostController
 
     function listAllPosts()
     {
-        $session = new \Forteroche\Blog\Model\AlertManager();
-        $postManager = new \Forteroche\Blog\Model\PostManager();
+        $session = new \Model\AlertManager();
+        $postManager = new \Model\PostManager();
         $allPosts = $postManager->getAllPosts();
 
         require('view/frontend/listPostsView.php');
@@ -35,8 +33,8 @@ class PostController
 
     function listAllPostsTemp()
     {
-        $session = new \Forteroche\Blog\Model\AlertManager();
-        $postManager = new \Forteroche\Blog\Model\PostManager();
+        $session = new \Model\AlertManager();
+        $postManager = new \Model\PostManager();
         $allPosts = $postManager->getAllPostsTemp();
 
         require('view/backend/listPostsTempView.php');
@@ -48,9 +46,9 @@ class PostController
     {
         if (isset($_GET['id']) && $_GET['id'] > 0) 
         {
-            $session = new \Forteroche\Blog\Model\AlertManager();
-            $postManager = new \Forteroche\Blog\Model\PostManager();
-            $commentManager = new \Forteroche\Blog\Model\CommentManager();
+            $session = new \Model\AlertManager();
+            $postManager = new \Model\PostManager();
+            $commentManager = new \Model\CommentManager();
            
             $post = $postManager->getPost($_GET['id']);
             $comments = $commentManager->getComments($_GET['id']);
@@ -58,7 +56,7 @@ class PostController
 
         else 
         {
-        throw new Exception('Aucun identifiant de chapitre envoyé');
+            throw new Exception('Aucun identifiant de chapitre envoyé');
         }
 
         require('view/frontend/postView.php');
@@ -69,14 +67,14 @@ class PostController
         if (isset($_GET['id']) > 0) 
         {
 
-            $postManager = new \Forteroche\Blog\Model\PostManager();
+            $postManager = new \Model\PostManager();
             $post = $postManager->getPost($_GET['id']);
             
         }
 
         else 
         {
-        throw new Exception('Aucun identifiant de chapitre envoyé');
+            throw new Exception('Aucun identifiant de chapitre envoyé');
         }
 
         require('view/backend/postTempView.php');
@@ -86,15 +84,15 @@ class PostController
     {
         if (!empty($_POST['titre']) && !empty($_POST['chapter']))
         {
-            $postManager = new \Forteroche\Blog\Model\PostManager();
+            $postManager = new \Model\PostManager();
             $nouveauChapitre = $postManager->addPost();
-            $session = new \Forteroche\Blog\Model\AlertManager();
+            $session = new \Model\AlertManager();
             $session->setflash('Le chapitre a bien été publier','success');
             header('Location: index.php?action=listAllPosts');
         }
         else
         {
-            $session = new \Forteroche\Blog\Model\AlertManager();
+            $session = new \Model\AlertManager();
             $session->setflash('l\'un des champs est vide','danger');
             header('Location: index.php?action=ecriture'); 
         }
@@ -106,16 +104,16 @@ class PostController
         if (isset($_GET['id'])) 
         {
 
-            $unpublish = new \Forteroche\Blog\Model\postManager();
+            $unpublish = new \Model\postManager();
             $depuPost = $unpublish->unpublish($_GET['id']);
             
         }
 
         else 
         {
-        throw new Exception('Aucun identifiant de chapitre envoyé');
+            throw new Exception('Aucun identifiant de chapitre envoyé');
         }
-        $session = new \Forteroche\Blog\Model\AlertManager();
+        $session = new \Model\AlertManager();
         $session->setflash('le chapitre a bien été dépublié','success');
         header('Location: index.php?action=listAllPostsTemp');        
     }
@@ -124,16 +122,16 @@ class PostController
     {
         if (!empty($_POST['titre']) && !empty($_POST['chapter']))
         {
-            $postManager = new \Forteroche\Blog\Model\PostManager();
+            $postManager = new \Model\PostManager();
             $nouveauChapitre = $postManager->addPostTemp();
-            $session = new \Forteroche\Blog\Model\AlertManager();
+            $session = new \Model\AlertManager();
             $session->setflash('Le chapitre a bien été ajouter a la liste temporaire','success');
             header('Location: index.php?action=listAllPostsTemp');
         
         }
         else
         {
-            $session = new \Forteroche\Blog\Model\AlertManager();
+            $session = new \Model\AlertManager();
             $session->setflash('l\'un des champs est vide','danger');
             header('Location: index.php?action=ecriture'); 
         }
@@ -145,14 +143,14 @@ class PostController
     {
         if (isset($_GET['id']))
         {
-            $modBrouillon = new \Forteroche\Blog\Model\PostManager();
+            $modBrouillon = new \Model\PostManager();
             $modifBrouillon = $modBrouillon->rePublier($_GET['id'], $_POST['titre'], $_POST['chapter']);
         }
         else
         {
             throw new Exception('Aucun identifiant de chapitre envoyé');    
         }
-        $session = new \Forteroche\Blog\Model\AlertManager();
+        $session = new \Model\AlertManager();
         $session->setflash('le chapitre a bien été modifié et publier','success');
         header('location: index.php?action=listAllPosts');
           
@@ -162,14 +160,14 @@ class PostController
     {
         if (isset($_GET['id']))
         {
-            $modBrouillon = new \Forteroche\Blog\Model\PostManager();
+            $modBrouillon = new \Model\PostManager();
             $modifBrouillon = $modBrouillon->modifBrouillon($_GET['id'], $_POST['titre'], $_POST['chapter']);
         }
         else
         {
             throw new Exception('Aucun identifiant de chapitre envoyé');    
         }
-        $session = new \Forteroche\Blog\Model\AlertManager();
+        $session = new \Model\AlertManager();
         $session->setflash('le brouillon a bien été modifié','success');
         header('location: index.php?action=listAllPostsTemp');
           
@@ -179,14 +177,14 @@ class PostController
     {
         if (isset ($_GET['id']))
         {
-            $postManager = new \Forteroche\Blog\Model\PostManager();
+            $postManager = new \Model\PostManager();
             $deletePost = $postManager->deletePost($_GET['id']);
         }
         else 
         {
-        throw new Exception('Aucun identifiant de chapitre envoyé');
+            throw new Exception('Aucun identifiant de chapitre envoyé');
         }    
-        $session = new \Forteroche\Blog\Model\AlertManager();
+        $session = new \Model\AlertManager();
         $session->setflash('Le chapitre a bien été supprimé','success');
         header('Location: index.php?action=listAllPostsTemp');
     }
@@ -195,7 +193,7 @@ class PostController
     {
         if (isset($_GET['id']) > 0)
         {
-            $postManager = new \Forteroche\Blog\Model\PostManager();
+            $postManager = new \Model\PostManager();
             $post = $postManager->getPost($_GET['id']);
         }
        
@@ -204,13 +202,13 @@ class PostController
 
     function addComment($postId, $author, $comment)
     {
-        $session = new \Forteroche\Blog\Model\AlertManager();
+        $session = new \Model\AlertManager();
         if (isset($_GET['id']) && $_GET['id'] > 0) 
         {
             if (!empty($_POST['comment'])) 
             { 
 
-                $commentManager = new \Forteroche\Blog\Model\CommentManager();
+                $commentManager = new \Model\CommentManager();
                 $affectedLines = $commentManager->postComment($postId, $author, $comment);
                 
                 header('Location: index.php?action=post&id=' . $postId);
@@ -218,8 +216,8 @@ class PostController
             }
            else
            {
-            $session->setflash('le champ de commentaire est vide','danger');
-            header('Location: index.php?action=post&id=' . $postId);
+                $session->setflash('le champ de commentaire est vide','danger');
+                header('Location: index.php?action=post&id=' . $postId);
            }
         }                               
 
@@ -230,16 +228,16 @@ class PostController
         if (isset($_GET['id'])) 
         {
 
-            $signalement = new \Forteroche\Blog\Model\commentManager();
+            $signalement = new \Model\commentManager();
             $signalComment = $signalement->setSignal($_GET['id']);
             
         }
 
         else 
         {
-        throw new Exception('Aucun identifiant de chapitre envoyé');
+            throw new Exception('Aucun identifiant de chapitre envoyé');
         }
-        $session = new \Forteroche\Blog\Model\AlertManager();
+        $session = new \Model\AlertManager();
         $session->setflash('le commentaire a bien été signalé','success');
         header('Location: index.php?action=post&id=' . $_GET['post_id']);
     }
@@ -249,16 +247,16 @@ class PostController
         if (isset($_GET['id'])) 
         {
 
-            $suppCom = new \Forteroche\Blog\Model\commentManager();
+            $suppCom = new \Model\commentManager();
             $supprimer = $suppCom->delComment($_GET['id']);
             
         }
 
         else 
         {
-        throw new Exception('Aucun identifiant de chapitre envoyé');
+            throw new Exception('Aucun identifiant de chapitre envoyé');
         }
-        $session = new \Forteroche\Blog\Model\AlertManager();
+        $session = new \Model\AlertManager();
         $session->setflash('le commentaire a bien été supprimé','success');
         header('location: index.php?action=moderation');
     }
@@ -268,24 +266,24 @@ class PostController
         if (isset($_GET['id'])) 
         {
 
-            $modComment = new \Forteroche\Blog\Model\commentManager();
+            $modComment = new \Model\commentManager();
             $modifComment = $modComment->modComment($_GET['id'], $_POST['comment']);
             
         }
 
         else 
         {
-        throw new Exception('Aucun identifiant de chapitre envoyé');
+            throw new Exception('Aucun identifiant de chapitre envoyé');
         }
-        $session = new \Forteroche\Blog\Model\AlertManager();
+        $session = new \Model\AlertManager();
         $session->setflash('le commentaire a bien été modéré','success');
         header('location: index.php?action=moderation');
     }
 
     function moderation()
     {
-        $moderation = new \Forteroche\Blog\Model\commentManager();
-        $session = new \Forteroche\Blog\Model\AlertManager();
+        $moderation = new \Model\commentManager();
+        $session = new \Model\AlertManager();
         $comments = $moderation->getSignalComments();
         
 
@@ -298,7 +296,7 @@ class PostController
         
         {
             $commentId = $_GET['id'];
-            $modComment =new \Forteroche\Blog\Model\commentManager();
+            $modComment =new \Model\commentManager();
             $comment = $modComment->getComment($commentId);
             
             require('view/backend/modCommentView.php');

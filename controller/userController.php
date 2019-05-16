@@ -1,27 +1,26 @@
 <?php
-namespace Forteroche\Blog\Controller;
+namespace Controller;
 
 // Chargement des classes
-require_once('model/UserManager.php');
-require_once('model/AlertManager.php');
+use \model;
 
 class UserController
 {
     function formLogin()
     {
-        $session = new \Forteroche\Blog\Model\AlertManager();
+        $session = new \Model\AlertManager();
         require('view/frontend/connexionView.php');
     }
 
 
     function login()
     {
-        $session = new \Forteroche\Blog\Model\AlertManager();
+        $session = new \Model\AlertManager();
         if (!empty($_POST['email']) && !empty($_POST['password'])) 
         {
             $email=trim($_POST['email']);
             $pass=trim($_POST['password']);
-            $userManager = new \Forteroche\Blog\Model\UserManager();
+            $userManager = new \Model\UserManager();
             $user = $userManager->getUser($email);
 
         
@@ -62,20 +61,20 @@ class UserController
 
     function addNewUser()
     {
-        $session = new \Forteroche\Blog\Model\AlertManager();
+        $session = new \Model\AlertManager();
         if(isset($_POST["email"]) && isset($_POST["nom"]) && isset($_POST["prenom"]) && isset($_POST["password"]) && isset($_POST["conf_password"]))
         {
             if(filter_var(trim($_POST['email']), FILTER_VALIDATE_EMAIL))
             {
                 $email=trim($_POST['email']);
-                $userManager = new \Forteroche\Blog\Model\UserManager();
+                $userManager = new \Model\UserManager();
                 $user = $userManager->getUser($email);
                 if(trim($_POST["email"])!=$user['mail'])
                 {
                     if($_POST["password"] == $_POST["conf_password"])
                     {
                         
-                        $userManager = new \Forteroche\Blog\Model\UserManager();
+                        $userManager = new \Model\UserManager();
                         $newUser = $userManager->newUser();
                         header('Location: index.php?action=btnSeConnecter');
                         $session->setflash('Inscription réussie, veuillez vous connecter.','success');
