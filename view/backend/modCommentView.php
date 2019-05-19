@@ -8,7 +8,7 @@
     
     <div>
         <label for="comment">Commentaire</label><br />
-        <textarea id="comment" name="comment" ><?php echo $comment['comment']?></textarea>
+        <textarea class="form-control" id="comment" name="comment" ><?php echo $comment['comment']?></textarea>
     </div>
     <div>
         <input type="submit" value="modérer" class=" btn btn-primary" formaction="index.php?action=modComment&id=<?= $comment['id'] ?>&post_id=<?= $comment['post_id'] ?>" />

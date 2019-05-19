@@ -4,16 +4,19 @@
 
 
 <script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=mto6yw9yfls0843ateaj0jo8adkbk9rthhrzk4gdixnrw4zi"></script>
-<script>tinymce.init({ selector:'textarea' });</script>
+<script>tinymce.init({ selector:'textarea',
+                       force_br_newlines : true,
+                       force_p_newlines : false,
+                       forced_root_block : '' });</script>
 
 <form  method="post">
     <div>
         <label for="titre">Titre du chapitre</label><br />
-        <input type="text" id="titre" name="titre" value="<?= $post['title'] ?>"/>
+        <input class="form-control" type="text" id="titre" name="titre" value="<?= $post['title'] ?>"/>
     </div>
     <div>
         <label for="chapter">Chapitre</label><br />
-        <textarea rows = "40" id="chapter" name="chapter"><?= nl2br($post['content']) ?></textarea>
+        <textarea class="form-control" rows = "40" id="chapter" name="chapter"><?= nl2br($post['content']) ?></textarea>
     </div>
     <div>
         <input type="submit" value="Publier" class=" btn btn-primary" formaction="index.php?action=republier&id=<?php echo $post['id']; ?>" />

@@ -47,10 +47,10 @@
                                                         <input hidden type="text" id="author" name="author" value="<?php echo $_SESSION['utilisateur']?>" />
                                                     </div>
                                                     <div>
-                                                        <textarea id="comment" name="comment"></textarea>
+                                                        <textarea class="form-control" id="comment" name="comment"></textarea>
                                                     </div>
                                                     <div>
-                                                        <input type="submit" value="Envoyer" />
+                                                        <input class=" btn btn-primary" type="submit" value="Envoyer" />
                                                     </div>
                                                 </form>
                                             </div>    
