@@ -237,7 +237,7 @@ class PostController
 
         else 
         {
-            throw new Exception('Aucun identifiant de chapitre envoyé');
+            throw new Exception('Aucun identifiant de commentaire envoyé');
         }
         $session = new AlertManager();
         $session->setflash('le commentaire a bien été signalé','success');
@@ -256,7 +256,7 @@ class PostController
 
         else 
         {
-            throw new Exception('Aucun identifiant de chapitre envoyé');
+            throw new Exception('Aucun identifiant de commentaire envoyé');
         }
         $session = new AlertManager();
         $session->setflash('le commentaire a bien été supprimé','success');
@@ -269,13 +269,13 @@ class PostController
         {
 
             $modComment = new CommentManager();
-            $modifComment = $modComment->modComment($_GET['id'], $_POST['comment']);
+            $modifComment = $modComment->modComment($_POST['comment'], $_GET['id']);
             
         }
 
         else 
         {
-            throw new Exception('Aucun identifiant de chapitre envoyé');
+            throw new Exception('Aucun identifiant de commentaire envoyé');
         }
         $session = new AlertManager();
         $session->setflash('le commentaire a bien été modéré','success');
@@ -294,13 +294,17 @@ class PostController
 
     function modifier()
     {
-        if (isset($_GET['id'])) 
+        if (isset($_GET['id']))
         {
             $commentId = $_GET['id'];
             $modifierComment = new CommentManager();
             $comment = $modifierComment->getComment($commentId);
             
             require('view/backend/modCommentView.php');
+        }
+        else
+        {
+            throw new Exception('Aucun identifiant de commentaire envoyé');
         }
     }
 }    
