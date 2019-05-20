@@ -2,7 +2,7 @@
 
 namespace Model;
 
-use \model;
+use Model\Manager;
 
 class PostManager extends Manager
 {

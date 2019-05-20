@@ -1,109 +1,114 @@
 <?php
+
 session_start();
 
 
-require('controller/postController.php');
-require('controller/userController.php');
 require('vendor/autoload.php');
+use Controller\PostController;
+use Controller\UserController;
+
 
 
 $action ="";
 if (isset($_GET['action'])) {
     $action = $_GET['action'];
 }
+
 try {
         switch ($action) {
 
-                case 'btnSeConnecter': $form = new \Controller\UserController();
+                case 'btnSeConnecter': $form = new UserController();
                 $form -> formLogin();
                 break;
 
-                case 'connexion': $connexion = new \Controller\UserController();
+                case 'connexion': $connexion = new UserController();
                 $connexion -> login();
                 break;
 
-                case 'deconnexion': $deconnexion = new \Controller\UserController();
+                case 'deconnexion': $deconnexion = new UserController();
                 $deconnexion -> logout();
                 break;
 
-                case 'inscription': $inscription = new \Controller\UserController();
+                case 'inscription': $inscription = new UserController();
                 $inscription -> addNewUser();
                 break;
 
-                case 'post': $post = new \Controller\PostController();
+                case 'post': $post = new PostController();
                 $post -> post();
                 break; 
 
-                case 'postTemp': $post = new \Controller\PostController();
+                case 'postTemp': $post = new PostController();
                 $post -> postTemp();
                 break;
                 
-                case 'listAllPosts': $chapitres = new \Controller\PostController();
+                case 'listAllPosts': $chapitres = new PostController();
                 $chapitres -> listAllPosts();
                 break;
 
-                case 'listAllPostsTemp': $chapitres = new \Controller\PostController();
+                case 'listAllPostsTemp': $chapitres = new PostController();
                 $chapitres -> listAllPostsTemp();
                 break;
 
-                case 'addComment':  $addComment = new \Controller\PostController();
+                case 'addComment':  $addComment = new PostController();
                 $addComment -> addComment($_GET['id'], $_POST['author'], $_POST['comment']);
                 break;
 
-                case 'ecriture': $addpost = new \Controller\PostController();
+                case 'ecriture': $addpost = new PostController();
                 $addpost -> formPost();
                 break;
 
-                case 'publier': $publier = new \Controller\PostController();
+                case 'publier': $publier = new PostController();
                 $publier -> addChapter();
                 break;
 
-                case 'depublier': $depublier = new \Controller\PostController();
+                case 'depublier': $depublier = new PostController();
                 $depublier -> depublier();
                 break;
 
-                case 'republier': $republier = new \Controller\PostController();
+                case 'republier': $republier = new PostController();
                 $republier -> republier();
                 break;
 
-                case 'modBrouillon': $modBrouillon = new \Controller\PostController();
+                case 'modBrouillon': $modBrouillon = new PostController();
                 $modBrouillon -> modBrouillon();
                 break;
 
-                case 'brouillon': $publier = new \Controller\PostController();
+                case 'brouillon': $publier = new PostController();
                 $publier -> addChapterTemp();
                 break;
 
-                case 'supprimer': $supprimer = new \Controller\PostController();
+                case 'supprimer': $supprimer = new PostController();
                 $supprimer -> suppression();
                 break;
 
-                case 'modification': $post = new \Controller\PostController();
+                case 'modification': $post = new PostController();
                 $post -> modificationPost();
                 break;
 
-                case 'signaler': $signalement = new \Controller\PostController();
+                case 'signaler': $signalement = new PostController();
                 $signalement -> signalComment();
                 break;
 
-                case 'modComment': $modCom = new \Controller\PostController();
+                case 'modComment': $modCom = new PostController();
                 $modCom -> modifComment($_GET['id'], $_POST['comment']);
                 break;
 
-                case 'supCom': $signalement = new \Controller\PostController();
+                case 'supCom': $signalement = new PostController();
                 $signalement -> delCom();
                 break;
 
-                case 'moderation': $moderation = new \Controller\PostController();
+                case 'moderation': $moderation = new PostController();
                 $moderation -> moderation();
                 break;
 
-                case 'modifier': $modification = new \Controller\PostController();
+                case 'modifier': $modification = new PostController();
                 $modification -> modifier();
                 break;
 
-                default: $listPosts = new \Controller\PostController();
-                $listPosts -> listPosts();    
+                default://if (class_exists('PostController')) { echo "ok"; } else { echo "ko"; }
+                $listPosts = new PostController();
+                $listPosts -> listPosts();
+                    
             }
         
     }
