@@ -1,4 +1,4 @@
-<?php $title = 'Commentaires signalés.'; ?>
+<?php $title = 'Commentaires signalés'; ?>
 
 <?php ob_start(); ?>
 
@@ -8,10 +8,10 @@
     
     <div>
         <label for="comment">Commentaire</label><br />
-        <textarea class="form-control" id="comment" name="comment" ><?php echo $comment['comment']?></textarea>
+        <textarea class="form-control" id="comment" name="comment" ><?php echo $comment['comment']; ?></textarea>
     </div>
     <div>
-        <input type="submit" value="modérer" class=" btn btn-primary" formaction="index.php?action=modComment&id=<?= $comment['id'] ?>&post_id=<?= $comment['post_id'] ?>" />
+        <input type="submit" value="modérer" class=" btn btn-primary" formaction="index.php?action=modComment&id=<?= $comment['id']; ?>&post_id=<?= $comment['post_id']; ?>" />
         <input type="submit" value="Supprimer" class=" btn btn-danger" formaction="index.php?action=supCom&id=<?= $comment['id']; ?>" />
     </div>
 </form>
