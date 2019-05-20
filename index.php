@@ -90,7 +90,7 @@ try {
                 break;
 
                 case 'modComment': $modCom = new PostController();
-                $modCom -> modifComment($_GET['id'], $_POST['comment']);
+                $modCom -> modifComment($_POST['comment'], $_GET['id']);
                 break;
 
                 case 'supCom': $signalement = new PostController();
