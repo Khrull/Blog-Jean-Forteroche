@@ -295,10 +295,9 @@ class PostController
     function modifier()
     {
         if (isset($_GET['id'])) 
-        
         {
             $commentId = $_GET['id'];
-            $modComment =new CommentManager();
+            $modComment = new CommentManager();
             $comment = $modComment->getComment($commentId);
             
             require('view/backend/modCommentView.php');

@@ -105,8 +105,7 @@ try {
                 $modification -> modifier();
                 break;
 
-                default://if (class_exists('PostController')) { echo "ok"; } else { echo "ko"; }
-                $listPosts = new PostController();
+                default: $listPosts = new PostController();
                 $listPosts -> listPosts();
                     
             }
