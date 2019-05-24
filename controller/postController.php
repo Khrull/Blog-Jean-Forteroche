@@ -299,12 +299,12 @@ class PostController
             $commentId = $_GET['id'];
             $modifierComment = new CommentManager();
             $comment = $modifierComment->getComment($commentId);
-            
             require('view/backend/modCommentView.php');
         }
         else
         {
-            throw new Exception('Aucun identifiant de commentaire envoyé');
+           throw new Exception('Aucun identifiant de commentaire envoyé');
         }
+        
     }
 }    

@@ -101,7 +101,7 @@ try {
                 $moderation -> moderation();
                 break;
 
-                case 'modifier': $modification = new PostController();
+                case 'modifier':$modification = new PostController();
                 $modification -> modifier();
                 break;
 

@@ -39,7 +39,7 @@ class UserController
                     $_SESSION['utilisateur'] = $user['prenom'];
                     $_SESSION['idUtilisateur'] = $user['id'];
                     $_SESSION['grpUtilisateur'] = $user['id_groupe'];
-                    $session->setflash("bonjour, ".$user['prenom'], 'success');
+                    $session->setflash("Bonjour et bienvenue ".$user['prenom'], 'success');
                     header('Location: index.php');
                     
                 }

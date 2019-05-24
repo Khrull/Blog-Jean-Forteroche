@@ -1,124 +1,83 @@
-.bloc_page {
-    
+* {
     margin: 0;
-    padding: 5px;
-    border: 5px solid grey;
+    padding: 0;
+}
+
+.bloc_page
+{
+    margin-top: 3%;
+    text-align: center;
+    border: 10px solid#353B41;
     background-color: rgb(184, 172, 154);
     
-    }
+}
+.presentation
+{
+    background-color: dimgray;
+    color: aliceblue;
+}
 
-header
+.presentation p
+{
+    color: aliceblue;
+}
+
+.footer h4, p
+{
+    color: grey;
+}
+button:not(:disabled)
+{
+    color: grey;
+}
+.alert
+{
+    position: fixed;
+    top:0; left:0; right:0;
+    z-index: 1060;
+    display: none;
+}
+.chaptitre
 {
     background-color: grey;
 }
-
-header h1
+.chaptext
 {
-    margin-top: 0.5em;
-}
-
-
-h1, h3
-{
-    font-family: 'Lato', sans-serif;
-    text-align: center;
-}
-
-.accueilView
-{
-    margin-left: 15%;
-}
-
-.listPostTemp
-{
-    margin-left: 15%;
-}
-
-.presentation
-{
-    text-align: center;
-}
-
-.listPostView
-{
-    margin-left: 15%;
-}
-
-.commentaire
-{
-    text-align: center;
-}
-
-.formCom
-{
-    
-    margin-left: 33%;
-    width: 80%;
-
-}
-
-h2
-{
-    text-align: center;
-}
-
-h3
-{
-    background-color:rgb(59, 151, 163);
-    color:white;
-    font-size:1.5em;
-    margin-bottom:0px;
-}
-
-h3 em
-{
-    font-size: 0.5em;
-}
-
-h5
-{
-    text-align: center;
+    margin-bottom: 5%;
     background-color:rgb(143, 133, 119);
-    
 }
-.news article
+.leschapitres
 {
-    font-family: 'Dancing Script', cursive;
-    background-color:rgb(143, 133, 119);
-    margin-top:0px;
-    text-align: center;
-    font-size: 1.2em;
+    margin-top: 5%;
 }
-
-.news article em 
+.edition
 {
-    font-family: 'Lato', sans-serif;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    max-width: 30%;
 }
-
-.news
+.edition a
 {
-    width:80%;
+    margin-left: 20%;
    
 }
-
-a
+.formCom
 {
-    text-decoration: none;
-    color: rgb(2, 15, 202);
-    font-size: 0.9em;
+    margin-bottom: 5%;
 }
-
-.sign
+.envCom
 {
-    color: rgb(63, 50, 33);
+    margin-top: 1%;
 }
-
-.sign:hover
+h5
 {
-    text-decoration: none;
-    color: rgb(216, 57, 57);
+    background-color:rgb(143, 133, 119);
+    
 }
-
+.commentaire
+{
+    margin-bottom: 2%;
+}
 .signale
 {
     color: rgb(216, 57, 57); 
@@ -128,127 +87,6 @@ a
 {
     color:  rgb(39, 121, 50);
 }
-
-.menu 
-{
-    display: flex;
-    background-color: grey;
-    margin: 0;
-}
-  
-.menu li 
-{
-    padding:20px;
-    list-style-type: none;
-}
-  
-.menu a 
-{
-    font-family: 'Lato', sans-serif;
-    color: rgb(0, 0, 0);
-    padding-bottom: 2px;
-    font-size: 1.1em;
-
-}
-  
-.menu a:hover 
-{
-    color: rgb(76, 218, 228);
-}
-
-.menu i 
-{
-    color: rgb(76, 218, 228);
-}
-
-.menuAdmin
-{
-    display: flex;
-    background-color: grey;
-    margin: 0;
-}
-
-.menuAdmin li 
-{
-    padding:20px;
-    list-style-type: none;
-}
-  
-.menuAdmin a 
-{
-    font-family: 'Lato', sans-serif;
-    color: rgb(0, 0, 0);
-    padding-bottom: 2px;
-    font-size: 1.1em;
-
-}
-  
-.menuAdmin a:hover 
-{
-    color: rgb(76, 218, 228);
-}
-
-.menuAdmin i 
-{
-    color: rgb(76, 218, 228);
-}
-
-.ecriture
-{
-    margin-left: 20%;
-    width: 60%;
-}
-
-
-.modifChapitre
-{
-    margin-left: 0%;
-    background-color: grey;
-    
-}
-
-.modifChapitre li 
-{
-    font-size: 0.9em;
-    list-style-type: none;
-}
-  
-.modifChapitre a 
-{
-    font-family: 'Lato', sans-serif;
-    color: rgb(0, 0, 0);
-    padding-bottom: 2px;
-    font-size: 1.2em;
-
-}
-  
-.modifChapitre a:hover 
-{
-    color: rgb(76, 218, 228);
-}
-
-.modifChapitre i 
-{
-    color: rgb(76, 218, 228);
-}
-
-
-.alert
-{
-    position: fixed;
-    top:0; left:0; right:0;
-    z-index: 1060;
-    display: none;
-}
-.jumbotron
-{
-    font-size: 3em;
-    text-align: center;
-    background-color: rgb(160, 160, 160);
-    padding: 5px;
-
-}
-
 input[type=submit]
 {
     border: 1 px;
@@ -256,153 +94,42 @@ input[type=submit]
     border-color: grey;
     cursor: pointer;
 }
-
-footer 
+@media (max-width: 1200px)
 {
-    background-color: grey;
-}
-
-footer .btn
-{
-    border-color: black;
-    margin-top: 2em;
-    margin-left: 10em;
-}
-
-footer h4
-{
-    text-align: center;
-}
-
-footer img
-{
-    margin-top: 1em;
-}
-
-#socialNetworks
-{
-    margin-left: 10em;
-    margin-top: 3em;
-}
-
-.fa-facebook:hover
-{
-    color:dodgerblue;
-}
-.fa-twitter:hover
-{
-    color:deepskyblue;
-}
-
-
-/* -------------------- Media Queries -------------------- */
-
-@media screen and (max-width: 1180px)
-{
-    .menu
+    .bloc_page
     {
-        margin-left: -10%;
+        margin-block-start: 4%;
     }
-    .menu li
-    {
-        font-size: 0.7em;
-        margin: auto;
-        
-    }
-
-    .menuAdmin li
-    {
-        font-size: 0.7em;
-        margin: auto;
-       
-    }
-    .menuAdmin
-    {
-        margin-left: -5%;
-    }
-    h1
+    .presentation h1
     {
         font-size: 2em;
-    }    
+    }
+    .leschapitres
+    {
+        font-size: 3em;
+    }
 }
 
-@media screen and (max-width: 930px)
+@media (max-width: 740px)
 {
-    .menuAdmin
+    .bloc_page
     {
-        margin-left: -40px;
+        margin-block-start: 7%;
     }
 }
 
-@media screen and (max-width: 768px)
+@media (max-width: 375px)
 {
-    .menu li
+	.bloc_page
     {
-        margin: auto;
+        margin-block-start: 15%;
     }
-    .menuAdmin
+    .presentation h1
     {
-        padding: 0;
-        margin-left: -40px;
+        font-size: 2em;
     }
-}
-
-@media screen and (max-width: 480px)
-{
-
-    .menu li 
+    .leschapitres
     {
-        font-size: 0.5em;
-        padding:20px;
-        list-style-type: none;
-        margin: auto;
+        font-size: 3em;
     }
-    .menuAdmin li
-    {
-        margin: auto;
-    }
-
-    .menuAdmin a
-    {
-        font-size: 0.5em;
-    }
-
-    h1
-    {
-        font-size: 1.8em;
-    }
-
-    .news
-    {
-        width: 99%;
-        margin-left: 0%;
-    }
-
-    .news h3
-    {
-        font-size: 1em;
-    }
-
-    .news h3 em
-    {
-        font-size: 0em;
-    }
-
-    footer img
-    {
-        margin-left: 20%;
-        margin-bottom: 10%;
-    }
-
-    footer .btn
-    {
-        margin-left: 35%;
-    }
-
-    #socialNetworks
-    {
-        margin-left: 35%;
-        margin-top: 3em;
-    }
-
-}
+}    
