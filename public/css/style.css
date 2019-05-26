@@ -40,11 +40,14 @@ button:not(:disabled)
 .chaptitre
 {
     background-color: grey;
+    font-family: 'Lato', sans-serif;
 }
 .chaptext
 {
     margin-bottom: 5%;
     background-color:rgb(143, 133, 119);
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.5em;
 }
 .leschapitres
 {
@@ -94,11 +97,25 @@ input[type=submit]
     border-color: grey;
     cursor: pointer;
 }
+
+@media (max-width: 1400px)
+{
+    .bloc_page
+    {
+        margin-block-start: 4%;
+        margin-right: 0%;
+    }
+    .edition a
+    {
+        margin-left: 10%;
+    }
+}
 @media (max-width: 1200px)
 {
     .bloc_page
     {
         margin-block-start: 4%;
+        margin-right: 0%;
     }
     .presentation h1
     {
@@ -108,13 +125,26 @@ input[type=submit]
     {
         font-size: 3em;
     }
+    .edition
+    {
+        max-width: 50%;
+    }
+    .edition a
+    {
+        margin-left: 10%;
+    }
 }
 
-@media (max-width: 740px)
+@media (max-width: 768px)
 {
     .bloc_page
     {
-        margin-block-start: 7%;
+        margin-block-start: 6%;
+        margin-right: 0%;
+    }
+    .edition
+    {
+        max-width: 50%;
     }
 }
 
@@ -123,6 +153,7 @@ input[type=submit]
 	.bloc_page
     {
         margin-block-start: 15%;
+        margin-right: 0%;
     }
     .presentation h1
     {
@@ -132,4 +163,17 @@ input[type=submit]
     {
         font-size: 3em;
     }
-}    
+    .edition
+    {
+        max-width: 60%;
+    }
+    .edition a
+    {
+        font-size: 0.9em;
+        margin-left: 15%;
+    } 
+    .chaptext
+    {
+        font-size: 1em;
+    }  
+}     

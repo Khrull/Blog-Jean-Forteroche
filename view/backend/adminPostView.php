@@ -10,8 +10,8 @@
                        forced_root_block : '' });</script>
 
 <div class="container">
-    <div class="col-md-12">
-        <div class="row">
+    <div class="row">
+        <div class="col-xl-12">
             <form class="ecriture" method="post">
                 <div class="form-group">
                     <label for="titre">Titre du chapitre</label><br />

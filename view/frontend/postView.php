@@ -13,7 +13,7 @@
                             <a href="index.php?action=modification&id=<?php echo $post['id']; ?>"><i class="fas fa-feather-alt"></i> Modification </a>
                             <a href="index.php?action=depublier&id=<?php echo $post['id']; ?>"><i class="fas fa-trash-alt"></i> Dépublier</a>
                         </nav>
-                        </div>
+                    </div>
                 <?php }
             }?>
 <div class="container">

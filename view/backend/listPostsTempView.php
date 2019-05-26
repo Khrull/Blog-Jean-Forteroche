@@ -12,23 +12,19 @@ foreach ($allPosts as $data)
 <div class="listPostTemp">
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
-                <div class="news">
-                    <h3>
+            <div class="col-xl-12">
+                <h3 class="shadow-lg chaptitre">
                         <?= ($data['title']) ?>
-                        
-                    </h3>
-                    
-                    <article>
+                </h3>
+                <article class="shadow-lg chaptext">
                         <?= nl2br($data['preview']) ?><em> ...</em>
                         <br />
                         <em><a href="index.php?action=postTemp&amp;id=<?= $data['id'] ?>">Lire la suite</a></em>
-                    </article>
-                </div>
-            </div>    
+                </article>
+            </div>
         </div>    
-    </div>
-</div>       
+    </div>    
+</div>
 <?php
 }
 ?>
