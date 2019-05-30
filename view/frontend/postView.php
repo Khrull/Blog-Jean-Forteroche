@@ -16,25 +16,38 @@
                     </div>
                 <?php }
             }?>
-<div class="container">
-        <div class="row">
-            <div class="col-xl-12">
-                <h3 class="shadow-lg chaptitre">
-                    <?= htmlspecialchars($post['title']) ?>
-                </h3>
-                                    
-                <article class="shadow-lg chaptext">
-                    <?= nl2br($post['content']) ?>
-                </article>
-            </div>
-        </div>
-    </div>
+            <?php if(isset($post['title']))
+            {?>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <h3 class="shadow-lg chaptitre">
+                                <?= htmlspecialchars($post['title']) ?>
+                            </h3>
+                                                
+                            <article class="shadow-lg chaptext">
+                                <?= nl2br($post['content']) ?>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            <?php }
+            else
+            {?>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <h3 class="shadow-lg Mauvaischaptitre">CE CHAPITRE N'EXISTE PAS</h3>
+                        </div>
+                    </div>
+                </div>            
+    <?php }?>
 
 <div class="container">   
         <div class="row">
             <div class="col-xl-12 formCom">
                 <h2>Commentaires</h2>
-                    <?php $session->flash();?>
+                    
                     <?php
                     if(isset($_SESSION['utilisateur']))
                     {?>

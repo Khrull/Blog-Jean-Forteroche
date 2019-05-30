@@ -6,7 +6,7 @@ use Model\Manager;
 
 class PostManager extends Manager
 {
-    //Renvoie les 3 derniers posts
+    //Renvoie les 3 derniers posts publiers
     public function getPosts()
     {
         $db = $this->dbConnect();
@@ -17,7 +17,7 @@ class PostManager extends Manager
         return $results;
     }
 
-    //Renvoie tous les posts
+    //Renvoie tous les posts publiers
     public function getAllPosts()
     {
         $db = $this->dbConnect();
@@ -38,7 +38,7 @@ class PostManager extends Manager
         $results = $allPosts->fetchAll();
         return $results;
     }
-
+   
     //Renvoie le post selectionné
     public function getPost($postId)
     {

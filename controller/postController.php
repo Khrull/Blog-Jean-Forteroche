@@ -46,40 +46,63 @@ class PostController
 
     function post()
     {
-        if (isset($_GET['id']) && $_GET['id'] > 0) 
+        if (isset($_GET['id']))
+        {
+            if ($_GET['id'] > 0)
+            {
+                
+                $postManager = new PostManager();
+                $commentManager = new CommentManager();
+                $post = $postManager->getPost($_GET['id']);
+                $comments = $commentManager->getComments($_GET['id']);
+                                            
+            }
+            
+            else 
+            {
+                $session = new AlertManager();
+                $session->setflash('Mauvaise ID hahaha !!!','danger');
+                header('Location: index.php');
+            }
+
+            require('view/frontend/postView.php');
+        }
+        else
         {
             $session = new AlertManager();
-            $postManager = new PostManager();
-            $commentManager = new CommentManager();
-           
-            $post = $postManager->getPost($_GET['id']);
-            $comments = $commentManager->getComments($_GET['id']);
-        }
-
-        else 
-        {
-            throw new Exception('Aucun identifiant de chapitre envoyé');
-        }
-
-        require('view/frontend/postView.php');
+            $session->setflash('Mauvaise ID hahaha !!!','danger');
+            header('Location: index.php');
+        } 
+        
     }
 
     function postTemp()
     {
-        if (isset($_GET['id']) > 0) 
+        if (isset($_GET['id']))
         {
+            if ($_GET['id'] > 0) 
+            {
 
-            $postManager = new PostManager();
-            $post = $postManager->getPost($_GET['id']);
-            
-        }
+                $postManager = new PostManager();
+                $post = $postManager->getPost($_GET['id']);
+                
+            }
 
-        else 
-        {
-            throw new Exception('Aucun identifiant de chapitre envoyé');
-        }
+            else 
+            {
+                $session = new AlertManager();
+                $session->setflash('Mauvaise ID hahaha !!!','danger');
+                header('Location: index.php');
+            }
 
         require('view/backend/postTempView.php');
+        }
+        else
+        {
+            $session = new AlertManager();
+            $session->setflash('Mauvaise ID hahaha !!!','danger');
+            header('Location: index.php');
+        }
     }
 
     function addChapter()
@@ -221,6 +244,11 @@ class PostController
                 $session->setflash('le champ de commentaire est vide','danger');
                 header('Location: index.php?action=post&id=' . $postId);
            }
+        }
+        else
+        {
+            $session->setflash('mauvaise ID hahaha !!!','danger');
+                header('Location: index.php');
         }                               
 
     }

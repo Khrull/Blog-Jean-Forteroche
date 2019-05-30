@@ -42,6 +42,12 @@ button:not(:disabled)
     background-color: grey;
     font-family: 'Lato', sans-serif;
 }
+.Mauvaischaptitre
+{
+    color: crimson;
+    background-color: grey;
+    font-family: 'Lato', sans-serif;
+}
 .chaptext
 {
     margin-bottom: 5%;
