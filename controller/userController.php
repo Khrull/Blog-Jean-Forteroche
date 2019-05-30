@@ -37,6 +37,8 @@ class UserController
                 if (password_verify($pass, $user['pass']))
                 {
                     $_SESSION['utilisateur'] = $user['prenom'];
+                    $_SESSION['utilisateurName'] = $user['nom'];
+                    $_SESSION['utilisateurMail'] = $user['mail'];
                     $_SESSION['idUtilisateur'] = $user['id'];
                     $_SESSION['grpUtilisateur'] = $user['id_groupe'];
                     $session->setflash("Bonjour et bienvenue ".$user['prenom'], 'success');

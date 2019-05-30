@@ -6,6 +6,7 @@ session_start();
 require('vendor/autoload.php');
 use Controller\PostController;
 use Controller\UserController;
+use Controller\MailController;
 
 
 
@@ -19,6 +20,14 @@ try {
 
                 case 'btnSeConnecter': $form = new UserController();
                 $form -> formLogin();
+                break;
+
+                case 'meContacter': $contact = new MailController();
+                $contact -> formContact();
+                break;
+
+                case 'sendMail': $sendmail = new MailController();
+                $sendmail -> mailTo();
                 break;
 
                 case 'connexion': $connexion = new UserController();

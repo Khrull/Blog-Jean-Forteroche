@@ -68,7 +68,12 @@
                     </div>
                     
                     <div class="text-center col-lg-4">
-                        <a href="#" class="text-uppercase"><button class="btn btn-default">Me contacter</button></a>
+                    <?php
+                    if(isset($_SESSION['utilisateur']))
+                    {?>
+                        <a href="index.php?action=meContacter" class="text-uppercase"><button class="btn btn-default">Me contacter</button></a>
+                    <?php
+                    }?>    
                         <div id="socialNetworks">
                             <a href="http://twitter.com"><i class="fab fa-twitter fa-3x"></i></a>
                             <a href="http://facebook.com"><i class="fab fa-facebook-square fa-3x"></i></a>
