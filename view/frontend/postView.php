@@ -37,7 +37,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-12">
-                            <h3 class="shadow-lg Mauvaischaptitre">CE CHAPITRE N'EXISTE PAS</h3>
+                            <h3 class="jumbotron shadow-lg Mauvaischaptitre">CE CHAPITRE N'EXISTE PAS</h3>
                         </div>
                     </div>
                 </div>            
