@@ -57,7 +57,7 @@
         
     <footer class="footer">
         <div class="container-dark bg-dark">
-            <div class="row justify-content-md-center">
+            <div class="row" id="foot">
                     <div class="text-center col-lg-4">
                         <img src="public/images/bjorn.jpg" class="rounded" alt="img profil" width="200px" height="240px">
                     </div>
